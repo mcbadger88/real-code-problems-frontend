@@ -61,10 +61,11 @@ The test runner that checked the submitted problems was written in ruby on rails
 
 **Dataflow diagram:**
 -
+![Dataflow diagram](/resources/readme/dataflow-diagram.png "Dataflow diagram")
 
 **ERD:**
 -
-
+![Entity relationship diagram](/resources/readme/erd-diagram.png "Mockup: Candidate dashboard")
 
 **Sitemap:**
 -
