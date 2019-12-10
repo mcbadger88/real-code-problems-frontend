@@ -81,7 +81,21 @@ We made a simple style guide to make sure our mockups were consistent.
 **Wireframes + Mockups:**
 -
 
-Candidate dashboard:
+Desktop Version: 
+
+https://www.figma.com/file/CPmV0LGqXeWkqNUCOkI5gP/Cotactical-Website-Design?node-id=160%3A36
+
+![Desktop:](/resources/readme/pc-wireframe-mockup.png "wireframe")
+
+Mobile Version:
+
+https://www.figma.com/file/CPmV0LGqXeWkqNUCOkI5gP/Cotactical-Website-Design?node-id=160%3A1428
+
+![Mobile:](/resources/readme/mobile-wireframe-mockup.png "wireframe")
+
+
+
+<!-- Candidate dashboard:
 ![Wireframe: Candidate dashboard](/resources/readme/wf-can-dash.png "wireframe: Candidate dashboard")
 ![Mockup: Candidate dashboard](/resources/readme/mu-can-dash.png "Mockup: Candidate dashboard")
 
@@ -100,7 +114,7 @@ Landing page:
 
 Candidate Profile:
 ![Desktop mockup: show individual challenge](/resources/readme/mu-can-profile.png "Desktop mockup: candidate profile")
-![Mobile mockup: show individual challenge](/resources/readme/mu-profile-mobile.png "Mobile mockup: candidate profile")
+![Mobile mockup: show individual challenge](/resources/readme/mu-profile-mobile.png "Mobile mockup: candidate profile") -->
 
 # Source control process:
 
