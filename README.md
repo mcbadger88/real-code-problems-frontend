@@ -16,7 +16,7 @@
 
 **Project Brief:**
 -
-For our final assignment, we were asked to build, design and deploy a MERN stack application that solves a problem while working with a real-world client. (Michael Milewski). 
+For our final assignment, we were asked to build, design and deploy a MERN stack application that solves a problem while working with a real-world client. (Michael Milewski from FRESHO https://www.fresho.com/). 
 
 **Purpose:**
 -
@@ -61,8 +61,9 @@ The test runner that checked the submitted problems was written in ruby on rails
 
 **Dataflow diagram:**
 -
-![Dataflow diagram](/resources/readme/dataflow-diagram.png "Dataflow diagram")
+![Dataflow diagram](/resources/readme/dataflow-diagram-candidate.png "Dataflow diagram")
 
+![Dataflow diagram](/resources/readme/dataflow-diagram-admin.png "Dataflow diagram")
 **ERD:**
 -
 ![Entity relationship diagram](/resources/readme/erd-diagram.png "Mockup: Candidate dashboard")
@@ -126,7 +127,7 @@ Once that feature was ready to be merged with master we made sure that another t
 
 **Trello**
 -
-We used to trello to keep track of all the tasks at hand and assign different parts of the project to our team members. Here are some screenshots of our trello board:
+We used to trello to keep track of all the tasks at hand and assign different parts of the project to our team members. Here are some screenshots of our trello board. We applied Agile techniques by setting each week as a Sprint Period. Besides, each morning team member have a meeting to share the progress of his own task and let other people if he/she needs any assistance. The morning meeting then becomes the foundation for setting each person's daily task.
 ![trello board 1](/resources/readme/trello-1.png "Trello board 1")
 
 ![Trello board 2](/resources/readme/trello-2.png "Trello board 2")
