@@ -1,0 +1,44 @@
+
+
+
+.NavBar {
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: #24BAE3;
+    padding:0.25em;
+    font-weight: 700;
+
+}
+ul {
+    
+    text-decoration: none;
+    display:flex;
+    padding-left:0;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style-type: none;
+    text-align:center;
+}
+
+@media(min-width:780px) {
+    ul {
+        flex-direction: row;
+        margin-left: 40%;
+        margin-right:2%;
+    }
+}
+
+.NavLink {
+    color:white;
+    text-decoration: none;
+    margin-bottom:0.25em;
+    margin-left:0;
+    padding-bottom:0.1em;
+}
+
+.NavLink:hover {
+    border-bottom: 2px solid #083256;
+    color: #083256;
+    
+}
+

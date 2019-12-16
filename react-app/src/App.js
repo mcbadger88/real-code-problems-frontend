@@ -8,6 +8,7 @@ import ViewAllChallengeSubmissions from './pages/ViewAllChallengeSubmissions'
 import CandidateProfile from './pages/CandidateProfile'
 import AddChallenge from './pages/AddChallenge'
 import Home from './pages/Home'
+import SignUp from './pages/SignUp'
 
 function App() {
 
@@ -47,10 +48,18 @@ function App() {
           exact path='/candidates/:id'
           component={CandidateProfile}
         />
+
+        <Route
+          exact path='/signup'
+          component={SignUp}
+        />
+
         <Route
           exact path='/'
           component={Home}
         />
+
+
       </Switch>
     </Router>
   );
