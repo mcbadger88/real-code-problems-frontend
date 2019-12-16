@@ -12,12 +12,13 @@ h2 {
     padding:0.5em;
     font-weight: 700;
     text-align: center;
-
+    box-shadow: 1px 1.5px 1.5px 1px #aaaaaa
 }
 
 @media (min-width:780px) {
     .NavBar {
         flex-direction: row;
+        font-weight: 400;
     }
 }
 
@@ -35,8 +36,15 @@ h2 {
 }
 
 .TagLine {
-    display: block;
+    display: none;
     font-style: italic;
+    text-shadow: lightgray -2px -2px 
+}
+
+@media (min-width:780px) {
+    .TagLine {
+        display: block;
+    }
 }
 
 ul {
