@@ -1,38 +1,77 @@
 
-
+h2 {
+    margin-top:0px;
+}
 
 .NavBar {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
     font-size: 1rem;
-    line-height: 1.5;
     background-color: #24BAE3;
-    padding:0.25em;
+    padding:0.5em;
     font-weight: 700;
+    text-align: center;
 
 }
+
+@media (min-width:780px) {
+    .NavBar {
+        flex-direction: row;
+    }
+}
+
+.LogoSection {
+    display:inline-block;
+    margin-left:2%;
+    min-width:235px;
+}
+
+.LogoText {
+    font-size:3.5rem;
+    display:inline-block;
+    color:white;
+    margin-bottom:0;
+}
+
+.TagLine {
+    display: block;
+    font-style: italic;
+}
+
 ul {
-    
     text-decoration: none;
     display:flex;
     padding-left:0;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     list-style-type: none;
     text-align:center;
 }
 
+li {
+    margin-bottom:0.25em;
+}
+
+
 @media(min-width:780px) {
     ul {
         flex-direction: row;
-        margin-left: 40%;
+        margin-left: 0%;
         margin-right:2%;
     }
+    li {
+        margin-top:1em;
+    }
 }
+
+
 
 .NavLink {
     color:white;
     text-decoration: none;
-    margin-bottom:0.25em;
-    margin-left:0;
+    margin-bottom:0.5em;
+    margin-left:0.5em;
     padding-bottom:0.1em;
 }
 
