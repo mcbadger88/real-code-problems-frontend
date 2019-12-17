@@ -30,7 +30,12 @@ function App() {
         />
         <Route
           exact path='/challenges/:id'
-          component={ViewSingleChallenge}
+          render={({ location, match }) => (
+            <ViewSingleChallenge
+              challengeID={match.params.id}
+            />
+          )}
+          // component={ViewSingleChallenge}
         />
         <Route
           exact path='/challenges/:id/attempts/:id/edit'
