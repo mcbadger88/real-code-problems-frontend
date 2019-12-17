@@ -24,7 +24,7 @@ This project is a coding playground that presents real world problems for develo
 
 **Target audience:**
 -
-Real code problems is perfect for:
+Real code problems (with a tentative project name Cotactical) is perfect for:
 
 - Students + Job seekers:
     - Looking for more practise on projects where they can receive feedback from a test suite
