@@ -1,9 +1,13 @@
 import React from 'react';
+import NavBar from '../components/NavBar/NavBar'
 
 const SignUp = () => {
-    console.log('something shown in here')
     return(
+        <>
+        <NavBar />
         <h2>This is the Signup Page</h2>
+        <a href={`${process.env.REACT_APP_BACKEND_BASE_URL}/user/gitauth`}>Log in with github</a>
+        </>
     )
 }
 
