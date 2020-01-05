@@ -8,7 +8,7 @@ const NavBar = () => {
     return(
         <nav className={styles.NavBar}>
             <div className={styles.LogoSection}>
-                <img src={logo} class={styles.Logo} alt="logo" />
+                <img src={logo} className={styles.Logo} alt="logo" />
                 <h2 className={styles.LogoText}>datical</h2>
                 <span className={styles.TagLine}>Learn code and get practical</span>
             </div>
