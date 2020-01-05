@@ -2,16 +2,15 @@ import React, {Component} from 'react'
 import styles from '../ChallengeCard/ChallengeCardStyles.module.css'
 import {NavLink} from 'react-router-dom'
 
- const ChallengeCard = (props) => {
+ const ChallengeCard = ({challengeDetail}) => {
     //  console.log(props.data);
-    console.log(props);
     return (
         <div className={styles.ChallengeCard}>
-            <h2>Title: {props.data.title}</h2>
-            <p>Description: {props.data.description}</p>
-            <p>Status: {props.data.active}</p>
+            <h2>Title: {challengeDetail.title}</h2>
+            <p>Description: {challengeDetail.description}</p>
+            <p>Status: {challengeDetail.active}</p>
             <p>Star:</p>
-            <NavLink className='NavLink' to={`challenges/${props.data.id}`}>More details</NavLink>
+            <NavLink className='NavLink' to={`challenges/${challengeDetail.id}`}>More details</NavLink>
         </div>
     )
 }

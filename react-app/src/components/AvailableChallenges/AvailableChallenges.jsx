@@ -6,28 +6,32 @@ import ChallengeCard from '../ChallengeCard/ChallengeCard'
 class AvailableChallenges extends Component {
 
     state = {
-        data:null
+        challenges:null,
+        isLoading:true
     }
 
     async componentDidMount () {
         const data = await getAllChallenges();
         this.setState(
-            {data:data}
+            {challenges:data,
+            isLoading:false}
         )
+        console.log(this.state)
     }
 
     render() {
 
-        if (this.state.data !== null) {
-            const challenges = this.state.data
-            const challengeList = challenges.map(
-                (challenge) => {return <ChallengeCard key={challenge.id} data={challenge}/>}
-                )
+        const {challenges} = this.state
 
-            return (challengeList)
-        }else{
-            return (<h2>Loading</h2>)
-        }
+        let challengeList = challenges ? challenges.map((challenge) => (<ChallengeCard key={challenge.id} challengeDetail={challenge} />)):null
+        
+        return(
+
+            <div>
+                {this.state.isLoading ? <p>cotent loading</p> : challengeList}
+            </div>
+        )
+
     }
 }
 
