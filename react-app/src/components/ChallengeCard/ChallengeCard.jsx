@@ -1,10 +1,17 @@
 import React, {Component} from 'react'
+import styles from '../ChallengeCard/ChallengeCardStyles.module.css'
+import {NavLink} from 'react-router-dom'
 
-
- ChallengeCard() {
+ const ChallengeCard = (props) => {
+    //  console.log(props.data);
+    console.log(props);
     return (
-        <div>
-            
+        <div className={styles.ChallengeCard}>
+            <h2>Title: {props.data.title}</h2>
+            <p>Description: {props.data.description}</p>
+            <p>Status: {props.data.active}</p>
+            <p>Star:</p>
+            <NavLink className='NavLink' to={`challenges/${props.data.id}`}>More details</NavLink>
         </div>
     )
 }

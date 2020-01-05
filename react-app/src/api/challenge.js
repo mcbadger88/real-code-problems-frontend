@@ -63,9 +63,17 @@ const allFeatures = [
 
 // Challenges - the feature data is only passed by reference
 const challenges = [
-    {
+    {   id:1,
         title: "Blog Challenge",
         description: "Make a blog post",
+        zipFileLocation: "https://github.com/saramic/real-code-challenge-blog/archive/master.zip",
+        active: true,
+        features: [allFeatures[0]._id, allFeatures[1]._id]
+    },
+
+    {   id:2,
+        title: "Two Side Market Place",
+        description: "Make a a two-side market place",
         zipFileLocation: "https://github.com/saramic/real-code-challenge-blog/archive/master.zip",
         active: true,
         features: [allFeatures[0]._id, allFeatures[1]._id]
@@ -76,7 +84,7 @@ const challenges = [
 export const getAllChallenges = async () => {
     // Temp, to be replaced with backend API call to /challenges
     await wait(Math.floor(500 + Math.random() * 1500))
-    console.log(challenges)
+    // console.log(challenges)
     return challenges
 }
 

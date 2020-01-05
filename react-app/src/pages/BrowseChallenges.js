@@ -6,8 +6,16 @@ const BrowseChallenges = () => {
     return (
         <>
         <NavBar />
-        <h1>BROWSE CHALLENGES HERE !</h1>
-        <AvailableChanllenges />
+        <h1>Welcome !</h1>
+        <div>
+            <h2 >Featured challenges</h2>
+            <AvailableChanllenges />
+        </div>
+
+        <div>
+            <h2>View all</h2>
+            <AvailableChanllenges />
+        </div>
         </>
     )
 }
