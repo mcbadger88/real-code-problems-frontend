@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom'
 
  const ChallengeCard = (props) => {
     //  console.log(props.data);
-    console.log(props);
+   
     return (
         <div className={styles.ChallengeCard}>
             <h2>Title: {props.data.title}</h2>
