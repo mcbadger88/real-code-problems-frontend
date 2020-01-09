@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import CandidateProfileNew from './pages/CandidateProfileNew'
 import BrowseChallenges from './pages/BrowseChallenges'
 import ViewSingleChallenge from './pages/ViewSingleChallenge'
 import SubmitSubmission from './pages/SubmitSubmission'
@@ -86,6 +87,10 @@ function App() {
           component={Home}
         />
 
+        <Route
+          exact path='/candidate/new'
+          component={CandidateProfileNew}
+        />
 
       </Switch>
     </Router>
