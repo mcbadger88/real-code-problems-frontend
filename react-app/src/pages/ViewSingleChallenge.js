@@ -4,35 +4,26 @@ import { getSingleChallenge } from '../api/challenge'
 import { getFeatures } from '../api/feature'
 
 
-const ViewSingleChallenge = (challengeID) => {
+const ViewSingleChallenge = ({challengeID}) => {
     const [features, setFeatures] = useState(null)
     const [challenge, setChallenge] = useState(null)
 
-    useEffect(() => {
-        console.log(challenge)
-        console.log(challengeID.challengeID)
-      }, [ challenge ])
-
-    useEffect( async () => {
-        // Replace with API call
-        // getAllChallenges().then(response => {
-        //   setChallenges(response)
-        // })
-        const challs = await getSingleChallenge(challengeID.challengeID)
+    useEffect(() => { 
+        async function receiveChallenge() {
+        const challs = await getSingleChallenge(challengeID)
         setChallenge(challs)
+        }
+        receiveChallenge();
+        
       }, [])
 
     useEffect(() => {
-        console.log(features)
-
-    }, [ features ])
-
-    useEffect( async () => {
-        const feats = await getFeatures(challengeID.challengeID)
-        console.log(feats)
+        async function receiveFeats() {
+        const feats = await getFeatures(challengeID)
         setFeatures(feats)
-    }, [])
-
+        }
+        receiveFeats();
+    }, [])    
 
     return (
         <>
@@ -41,6 +32,7 @@ const ViewSingleChallenge = (challengeID) => {
         <p>{challenge ? challenge.title : null }</p>
         <p>{features ? features[0].title : null }</p>
         { features ? <img src={features[0].scenarios[0].lineNumbers[0].helperImage}></img> : null }
+        
         </>
     )
 }
