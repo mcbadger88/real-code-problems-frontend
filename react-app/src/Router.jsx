@@ -61,9 +61,5 @@ const Router = () => (
           component={CandidateProfileNew}
         />
     </Switch>
-    
-)
-
-
-
+    )
 export default Router 
