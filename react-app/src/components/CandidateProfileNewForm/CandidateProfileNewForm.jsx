@@ -15,8 +15,8 @@ const CandidateProfileNewForm = () => {
 
     const handleInputChange = (e) => {
         e.persist();
-        setInputs(inputs => ({
-            ...inputs, [e.target.name]:e.target.value}))
+        setInputs(inputs => {return {
+            ...inputs, [e.target.name]:e.target.value}})
         console.log('here')
         }
     
