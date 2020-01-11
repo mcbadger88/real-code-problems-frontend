@@ -1,12 +1,16 @@
 import React from 'react';
 import NavBar from '../components/NavBar/NavBar'
+import auth from '../api/auth'
 
-const SignUp = () => {
+const SignUp = (props) => {
     return(
         <>
         <NavBar />
         <h2>This is the Signup Page</h2>
-        <a href={`${process.env.REACT_APP_BACKEND_BASE_URL}/user/gitauth`}>Log in with github</a>
+        {/* <a href={`http://localhost:5000/user/gitauth`}>Log in with github</a> */}
+        <button onClick={(
+
+        ) => auth.login(() => {props.history.push("/challenges")})}>Sign In With Github</button>
         </>
     )
 }
