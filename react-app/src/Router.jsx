@@ -1,5 +1,6 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom'
+import ProtectedRoute from './ProtectedRoute'
 import CandidateProfileNew from './pages/CandidateProfileNew'
 import BrowseChallenges from './pages/BrowseChallenges'
 import ViewSingleChallenge from './pages/ViewSingleChallenge'
@@ -13,7 +14,7 @@ import SignUp from './pages/SignUp'
 
 const Router = () => (
     <Switch>
-        <Route
+        <ProtectedRoute
           exact path='/challenges'
           component={BrowseChallenges}
         />
@@ -33,7 +34,7 @@ const Router = () => (
           exact path='/challenges/:id/attempts/:id/edit'
           component={SubmitSubmission}
         />
-        <Route
+        <ProtectedRoute
           exact path='/candidates/:id/attempts'
           component={MyChallengeSubmissions}
         />
@@ -41,7 +42,7 @@ const Router = () => (
           exact path='/challenges/:id/attempts'
           component={ViewAllChallengeSubmissions}
         />
-        <Route
+        <ProtectedRoute
           exact path='/candidates/:id'
           component={CandidateProfile}
         />
@@ -56,14 +57,15 @@ const Router = () => (
           component={Home}
         />
 
-        <Route
+        <Route 
+          exact path='/unauthorised'
+          render={() => <h1>You don't have the right to access this page! Please Login!</h1>}
+        />
+
+        <ProtectedRoute
           exact path='/candidate/new'
           component={CandidateProfileNew}
         />
     </Switch>
-    
-)
-
-
-
+    )
 export default Router 
