@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NavBar from '../components/NavBar/NavBar'
 import AvailableChanllenges from '../components/AvailableChallenges/AvailableChallenges'
 
-const BrowseChallenges = () => {
+const BrowseChallenges = (props) => {
     return (
         <>
         <NavBar />

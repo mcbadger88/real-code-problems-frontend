@@ -10,7 +10,7 @@ const SignUp = (props) => {
         {/* <a href={`http://localhost:5000/user/gitauth`}>Log in with github</a> */}
         <button onClick={(
 
-        ) => auth.login(() => {props.history.push("/challenges")})}>Sign In With Github</button>
+        ) => auth.login(() => {props.history.push('/challenges')})}>Sign In With Github</button>
         </>
     )
 }

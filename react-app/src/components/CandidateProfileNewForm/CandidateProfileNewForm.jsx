@@ -1,16 +1,21 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
+import {candidates} from '../../api/candidate'
 
-const CandidateProfileNewForm = () => {
+console.log(candidates)
+
+const CandidateProfileNewForm = (props) => {
+
 
     const [inputs,setInputs] = useState({})
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(inputs)
-        let response = await axios.post('http://localhost:5000/candidates', {...inputs,user_id:Math.random()})
-        console.log(response)
+        candidates.push({...inputs,use_id:Math.random()*1000,candidate_id:Math.random()*1000})
+        // let response = await axios.post('http://localhost:5000/candidates', {...inputs,user_id:Math.random()})
+        console.log(candidates)
+        props.history.push('/profilecreated')
     }
 
     const handleInputChange = (e) => {
@@ -48,12 +53,12 @@ const CandidateProfileNewForm = () => {
     <p>Here we put the react form to create the candidate</p>
     <form onSubmit={handleSubmit}>
         <label>
-            <input onChange={handleInputChange} type="text" name="firstname" value={inputs.firstName} placeholder="First Name" required/>
+            <input onChange={handleInputChange} type="text" name="firstName" value={inputs.firstName} placeholder="First Name" required/>
         </label>
         <br />
 
         <label>
-            <input onChange={handleInputChange} type="text" name="lastname" value={inputs.lastName} placeholder="Last Name" required/>
+            <input onChange={handleInputChange} type="text" name="lastName" value={inputs.lastName} placeholder="Last Name" required/>
         </label>
         <br />
 
@@ -67,8 +72,8 @@ const CandidateProfileNewForm = () => {
 
         <div>
             <h2>Information provided and stored in state</h2>
-            {inputs.firstName}
-            {inputs.lastName}
+            {inputs.firstname}
+            {inputs.lastname}
             {inputs.bio}
         </div>
 

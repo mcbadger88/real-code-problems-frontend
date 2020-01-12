@@ -66,6 +66,12 @@ const Router = () => (
           exact path='/candidate/new'
           component={CandidateProfileNew}
         />
+
+        <Route
+          exact path='/profilecreated'
+          render={()=><p>Profile Created</p>}
+        />
+
     </Switch>
     )
 export default Router 

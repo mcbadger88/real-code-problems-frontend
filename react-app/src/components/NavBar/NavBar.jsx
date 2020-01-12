@@ -4,8 +4,7 @@ import styles from '../NavBar/NavBarStyles.module.css'
 import logo from '../../assets/SiteLogo.svg'
 import auth from '../../api/auth'
 
-const NavBar = () => {
-
+const NavBar = (props) => {
     return(
         <nav className={styles.NavBar}>
             <div className={styles.LogoSection}>
@@ -17,7 +16,7 @@ const NavBar = () => {
 
                 <li><NavLink className={styles.NavLink} to={"/candidates/:id/attempts"}>View my submissions</NavLink></li>
                 <li><NavLink className={styles.NavLink} to={"/challenges"}>Browse challenges</NavLink></li>
-                <li><NavLink className={styles.NavLink} to={"/candidates/:id"}>Profile</NavLink></li>
+                <li><NavLink className={styles.NavLink} to={"/candidates/1"}>Profile</NavLink></li>
                 <li><NavLink className={styles.NavLink} to={"/signup"}>Sign In</NavLink></li>
                 <li ><NavLink className={styles.NavLink} to={"/"} onClick={() => auth.logout()}> Sign Out</NavLink></li>       
 
