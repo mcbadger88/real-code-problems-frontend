@@ -2,26 +2,25 @@
 
 export let candidates = [
 
-    {candidate_id:"C001",
-    user_id:"U001",
+    {candidate_id:"1",
+    user_id:"1",
     firstName:"Emma",
     lastName:"Cullen",
     Linkedin: "",
     github:"",
-    bio:"",
+    bio:"From UK",
     image:"",
     attempts:"",
     username:""},
 
-    {candidate_id:"C002",
-    user_id:"U002",
+    {candidate_id:"2",
+    user_id:"2",
     firstName:"Taya",
     lastName:"Lacey",
     Linkedin: "",
     github:"",
-    bio:"",
+    bio:"From Sydney",
     image:"",
     attempts:"",
     username:""}
 ]
-

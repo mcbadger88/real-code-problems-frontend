@@ -3,6 +3,7 @@ import NavBar from '../components/NavBar/NavBar'
 import AvailableChanllenges from '../components/AvailableChallenges/AvailableChallenges'
 
 const BrowseChallenges = (props) => {
+    console.log(props)
     return (
         <>
         <NavBar />

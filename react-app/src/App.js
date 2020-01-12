@@ -6,6 +6,10 @@ function App() {
   // Local State
   const [loading, setLoading] = useState(false);
 
+  const userID = Math.floor(Math.random() * 2) + 1  
+
+  //the above code generate random userID from 1 to 2;
+
   // Hi! The idea for the function below is that it will hit a route in the backend when somebody loads the page for the first time or logs in.
 
   // The url it will hit in the backend is "http://localhost:5000/user/current"
@@ -30,7 +34,7 @@ function App() {
   return loading ? (
     <div>Loading...</div>
   ) : (
-      <Router />
+      <Router userID={userID}/>
   );
 }
 

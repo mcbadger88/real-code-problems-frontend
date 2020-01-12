@@ -12,11 +12,12 @@ import AddChallenge from './pages/AddChallenge'
 import Home from './pages/Home'
 import SignUp from './pages/SignUp'
 
-const Router = () => (
+const Router = ({userID}) => {console.log(userID);return (
+  
     <Switch>
         <ProtectedRoute
           exact path='/challenges'
-          component={BrowseChallenges}
+          userID={userID} component={BrowseChallenges}
         />
         <Route
           exact path='/challenges/new'
@@ -53,8 +54,7 @@ const Router = () => (
         />
 
         <Route
-          exact path='/'
-          component={Home}
+          exact path='/' render={(props) => (<Home userID={userID} {...props}/>)}
         />
 
         <Route 
@@ -73,5 +73,5 @@ const Router = () => (
         />
 
     </Switch>
-    )
+    )}
 export default Router 

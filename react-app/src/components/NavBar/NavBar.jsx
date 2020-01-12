@@ -5,6 +5,7 @@ import logo from '../../assets/SiteLogo.svg'
 import auth from '../../api/auth'
 
 const NavBar = (props) => {
+    console.log(props, 'from nav');
     return(
         <nav className={styles.NavBar}>
             <div className={styles.LogoSection}>
@@ -16,7 +17,8 @@ const NavBar = (props) => {
 
                 <li><NavLink className={styles.NavLink} to={"/candidates/:id/attempts"}>View my submissions</NavLink></li>
                 <li><NavLink className={styles.NavLink} to={"/challenges"}>Browse challenges</NavLink></li>
-                <li><NavLink className={styles.NavLink} to={"/candidates/1"}>Profile</NavLink></li>
+                <li><NavLink className={styles.NavLink} to={`/candidates/${props.userID}`}>Profile</NavLink></li>
+                {/* the above nav links to shall be dynamically generated after we get the user id from the top level */}
                 <li><NavLink className={styles.NavLink} to={"/signup"}>Sign In</NavLink></li>
                 <li ><NavLink className={styles.NavLink} to={"/"} onClick={() => auth.logout()}> Sign Out</NavLink></li>       
 
