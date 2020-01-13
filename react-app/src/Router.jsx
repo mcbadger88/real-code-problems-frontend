@@ -38,7 +38,7 @@ const Router = ({user}) => {console.log(user);return (
         />
         <ProtectedRoute
           exact path='/candidates/:id/attempts'
-          component={MyChallengeSubmissions}
+          user={user} component={MyChallengeSubmissions}
         />
         <Route
           exact path='/challenges/:id/attempts'
