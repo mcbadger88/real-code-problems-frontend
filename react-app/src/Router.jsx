@@ -12,13 +12,14 @@ import AddChallenge from './pages/AddChallenge'
 import Home from './pages/Home'
 import SignUp from './pages/SignUp'
 
-const Router = ({userID}) => {console.log(userID);return (
+const Router = ({user}) => {console.log(user);return (
   
     <Switch>
         <ProtectedRoute
           exact path='/challenges'
-          userID={userID} component={BrowseChallenges}
+          user={user} component={BrowseChallenges}
         />
+
         <Route
           exact path='/challenges/new'
           component={AddChallenge}
@@ -44,8 +45,8 @@ const Router = ({userID}) => {console.log(userID);return (
           component={ViewAllChallengeSubmissions}
         />
         <ProtectedRoute
-          exact path='/candidates/:id'
-          component={CandidateProfile}
+          exact path='/candidates/user/:id'
+          user={user} component={CandidateProfile}
         />
 
         <Route
@@ -54,7 +55,7 @@ const Router = ({userID}) => {console.log(userID);return (
         />
 
         <Route
-          exact path='/' render={(props) => (<Home userID={userID} {...props}/>)}
+          exact path='/' render={(props) => (<Home user={user} {...props}/>)}
         />
 
         <Route 
@@ -64,7 +65,7 @@ const Router = ({userID}) => {console.log(userID);return (
 
         <ProtectedRoute
           exact path='/candidate/new'
-          component={CandidateProfileNew}
+          user={user} component={CandidateProfileNew}
         />
 
         <Route

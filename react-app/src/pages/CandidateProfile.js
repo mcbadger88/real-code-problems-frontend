@@ -3,24 +3,31 @@ import NavBar from '../components/NavBar/NavBar'
 import CandidateProfileCard from '../components/CandidateProfileCard'
 import {Link} from 'react-router-dom'
 import {candidates} from '../api/candidate'
+import axios from 'axios';
 
 const CandidateProfile = (props) => {
-    console.log(props,'getting anything')
 
-    const [candidate, setCandidate] = useState(null)
+
+    const [candidateProfile, setCandidateProfile] = useState(null)
 
     useEffect( 
         ()=>{
-            let foundCandidate = candidates.find((candidate) => candidate.user_id == props.match.params.id)
-            setCandidate(foundCandidate)
+            async function getCandidateProfile () {
+                let response = await axios.get(`http://localhost:5000/candidates/user/${props.user._id}`)
+                
+                const {data} = response
+                setCandidateProfile(data)
+                console.log(candidateProfile, 'why there is nothing')
+            } 
+            getCandidateProfile()
         }, []
     )
 
     return (
         <>
-        <NavBar />
-        <h1>CandidateProfile HERE !</h1>
-        {candidate ? <CandidateProfileCard {...props} foundCandidate={candidate}/> : <p><Link to='/candidate/new'>Create your profile</Link></p>}
+        <NavBar user={props.user}/>
+        <h1>CandidateProfile Page HERE !</h1>
+        {candidateProfile ? <CandidateProfileCard {...props} foundCandidateProfile={candidateProfile}/> : <p><Link to='/candidate/new'>No Profile Yet. Create your profile</Link></p>}
         </>
     )
 }

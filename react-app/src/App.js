@@ -1,12 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import Router from './Router'
+import axios from 'axios'
 
 function App() {
 
   // Local State
   const [loading, setLoading] = useState(false);
 
-  const userID = Math.floor(Math.random() * 2) + 1  
+  const [user, setUser] = useState(false)
+
+  useEffect(() => {
+
+    const getUserData = async () => {
+      try {
+        let response = await axios.get('http://localhost:5000/user/current', {
+          withCredentials: true
+        })
+        const user = response.data
+        setUser(user)
+        
+      } catch(err) {
+        console.log(err)
+      }
+    }
+
+    getUserData()
+  }, [])
 
   //the above code generate random userID from 1 to 2;
 
@@ -34,7 +53,7 @@ function App() {
   return loading ? (
     <div>Loading...</div>
   ) : (
-      <Router userID={userID}/>
+      <Router user={user}/>
   );
 }
 

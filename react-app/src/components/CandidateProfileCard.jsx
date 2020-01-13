@@ -1,16 +1,36 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 
 
-const CandidateProfileCard = ({foundCandidate, ...rest}) => {
+
+
+
+const CandidateProfileCard = ({foundCandidateProfile, history, ...rest}) => {
+
+    const handleClick = () => {
+        console.log(history)
+        history.push('candidates/{}/edit')
+    }
+
+
+
+
+    useEffect (
+        () => {console.log({...rest}, 'what is the rest from candidate card')}
+        
+        ,[])
     
+
    return(
        
     <div>
-        <p>Name: {foundCandidate.firstName} {foundCandidate.lastName}</p>   
-        <p>UserID: {foundCandidate.user_id}</p>   
-        <p>CandidateID: {foundCandidate.candidate_id}</p>   
-        <p>Bio: {foundCandidate.bio}</p>   
-        <button>Edit</button> 
+            <p>First Name: {foundCandidateProfile.firstname}</p>   
+            <p>Last Name: {foundCandidateProfile.lastname}</p>
+            <p>UserID(To be hidden maybe): {foundCandidateProfile.user_id}</p>   
+            <p>CandidateID(To be hidden maybe): {foundCandidateProfile._id}</p>   
+            <p>Bio: {foundCandidateProfile.bio}</p>   
+            <p>Github Account: {foundCandidateProfile.github}</p>
+            <p>User Name (in our mongodb?): {foundCandidateProfile.username}</p>
+        <button onClick={handleClick}>Edit</button> 
     </div>
     )
 }

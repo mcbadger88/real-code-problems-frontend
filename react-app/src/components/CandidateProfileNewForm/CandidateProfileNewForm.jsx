@@ -12,10 +12,13 @@ const CandidateProfileNewForm = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        candidates.push({...inputs,use_id:Math.random()*1000,candidate_id:Math.random()*1000})
-        // let response = await axios.post('http://localhost:5000/candidates', {...inputs,user_id:Math.random()})
-        console.log(candidates)
-        props.history.push('/profilecreated')
+        // candidates.push({...inputs,use_id:Math.random()*1000,candidate_id:Math.random()*1000})
+        let response = await axios.post('http://localhost:5000/candidates', {...inputs,user_id:props.user._id},{
+            withCredentials: true
+          })
+        
+        console.log(response)
+        // props.history.push('/profilecreated')
     }
 
     const handleInputChange = (e) => {
@@ -44,6 +47,11 @@ const CandidateProfileNewForm = (props) => {
     //     setBio(value)
     // }
 
+    useEffect(() => {
+        console.log(props)
+    })
+
+
     useEffect (() => {
       console.log('if firstname updated')
     }, [inputs.firstName])
@@ -53,17 +61,17 @@ const CandidateProfileNewForm = (props) => {
     <p>Here we put the react form to create the candidate</p>
     <form onSubmit={handleSubmit}>
         <label>
-            <input onChange={handleInputChange} type="text" name="firstName" value={inputs.firstName} placeholder="First Name" required/>
+            <input onChange={handleInputChange} type="text" name="firstname" value={inputs.firstname} placeholder="First Name" required/>
         </label>
         <br />
 
         <label>
-            <input onChange={handleInputChange} type="text" name="lastName" value={inputs.lastName} placeholder="Last Name" required/>
+            <input onChange={handleInputChange} type="text" name="lastname" value={inputs.lastname} placeholder="Last Name" required/>
         </label>
         <br />
 
         <label>
-            <input onChange={handleInputChange} type="text" name="bio" vaule={inputs.bio}placeholder="About Yourself"/>
+            <input onChange={handleInputChange} type="text" name="bio" vaule={inputs.bio} placeholder="About Yourself"/>
         </label>
         <br />
 
