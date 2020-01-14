@@ -4,8 +4,7 @@ import auth from './api/auth'
 
 //HOC design may seems very confusing 
 const ProtectedRoute = ({component:PageComponent,user, ...rest}) => {
-        console.log({...rest}, 'from ProtectRoute')
-        console.log(user, 'userinfo from protected route');
+      
         return (
             <Route 
             {...rest} 

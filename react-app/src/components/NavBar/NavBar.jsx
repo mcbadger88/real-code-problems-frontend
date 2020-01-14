@@ -5,7 +5,7 @@ import logo from '../../assets/SiteLogo.svg'
 import auth from '../../api/auth'
 
 const NavBar = (props) => {
-    console.log(props, 'from nav');
+    // console.log(props, 'from nav');
 
     return(
         <nav className={styles.NavBar}>

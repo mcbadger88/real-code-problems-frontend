@@ -13,13 +13,16 @@ const CandidateProfile = (props) => {
     useEffect( 
         ()=>{
             async function getCandidateProfile () {
-                let response = await axios.get(`http://localhost:5000/candidates/user/${props.user._id}`)
+                let response = await axios.get(`http://localhost:5000/candidates/user/${props.user._id}`, {
+                    withCredentials: true
+                })
                 
                 const {data} = response
                 setCandidateProfile(data)
-                console.log(candidateProfile, 'why there is nothing')
+                
             } 
             getCandidateProfile()
+           
         }, []
     )
 

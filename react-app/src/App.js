@@ -18,7 +18,7 @@ function App() {
         })
         const user = response.data
         setUser(user)
-        
+        console.log(user, 'from App')
       } catch(err) {
         console.log(err)
       }

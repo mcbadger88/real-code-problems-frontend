@@ -1,24 +1,13 @@
 import React,{useEffect} from 'react'
-
-
-
-
+import {Redirect} from 'react-router-dom'
 
 const CandidateProfileCard = ({foundCandidateProfile, history, ...rest}) => {
 
     const handleClick = () => {
-        console.log(history)
-        history.push('candidates/{}/edit')
+        history.push(`/candidates/${foundCandidateProfile._id}/edit`)
+        // 'localhost:3000'
     }
 
-
-
-
-    useEffect (
-        () => {console.log({...rest}, 'what is the rest from candidate card')}
-        
-        ,[])
-    
 
    return(
        
