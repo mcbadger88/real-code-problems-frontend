@@ -1,0 +1,31 @@
+/* * {
+    border: 1px solid red;
+} */
+
+.container {
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+}
+
+.leftHandContainer {
+    width: 40%;
+    height: 100%;
+    padding: 20px 56px;
+}
+
+.rightHandContainer {
+    width: 60%;
+    height: 100%;
+    padding: 40px 20px;
+}
+
+.featureArea {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #F0F5FC;
+    border-radius: 10px;
+}
+
+.buttonArea {
+    height: 40%;
+}
