@@ -1,0 +1,26 @@
+
+
+.buttonArea {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 30px 45px;
+}
+
+.buttonAreaTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonAreaBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.buttonArea button {
+    height: fit-content;
+}

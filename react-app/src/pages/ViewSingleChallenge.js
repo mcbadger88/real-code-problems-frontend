@@ -4,13 +4,15 @@ import { getFeatures } from '../api/feature'
 import styles from './ViewSingleChallenge.module.css'
 import ChallengeDescription from '../components/ChallengeDescription/ChallengeDescription'
 import Feature from '../components/ChallengeFeature/ChallengeFeature'
+import ButtonArea from '../components/ChallengeButtonArea/ChallengeButtonArea'
 import { getSingleChallenge } from '../api/challenge'
 
 
 
-const ViewSingleChallenge = (challengeID) => {
+const ViewSingleChallenge = ({challengeID}) => {
     const [features, setFeatures] = useState(null)
     const [challenge, setChallenge] = useState(null)
+    const [selectedFeature, setSelectedFeature] = useState(null)
 
     useEffect(() => {
         console.log(features)
@@ -22,12 +24,12 @@ const ViewSingleChallenge = (challengeID) => {
         // getAllChallenges().then(response => {
         //   setChallenges(response)
         // })
-        const chall = await getSingleChallenge(challengeID.challengeID)
+        const chall = await getSingleChallenge(challengeID)
         setChallenge(chall)
       }, [ ])
 
     useEffect( async () => {
-        const feats = await getFeatures(challengeID.challengeID)
+        const feats = await getFeatures(challengeID)
         console.log(`features ${feats}`)
         setFeatures(feats)
     }, [])
@@ -44,22 +46,37 @@ const ViewSingleChallenge = (challengeID) => {
     // 4. Add image toggling
     // 5. Add slider? find name of the thing ! move to a seperate card
 
+    //render feature number based on click
     return (
         <>
         <NavBar />
         <div className={styles.container}>
-            <div className={styles.leftHandContainer}>
-                <ChallengeDescription challenge={challenge}/>
-                <div className={styles.buttonArea}> button area</div>
-            </div>
-            <div className={styles.rightHandContainer}>
-                <div className={styles.featureArea}>
-                    {features && features.map((feature) => 
-                    <Feature feature={feature} totalFeatures={features.length}/>
-                    )}
-                </div>
+            {challenge && 
+            <>
+            <h1>{challenge.title}: Your Status</h1>
+            <div className={styles.contentArea}>
+                <div className={styles.leftHandContainer}>
+                    <ChallengeDescription challenge={challenge}/>
+                    <ButtonArea challenge={challenge}/>
 
+                </div>
+                <div className={styles.rightHandContainer}>
+                    <div className={styles.featureArea}> 
+                        {features && selectedFeature &&
+                        <Feature feature={selectedFeature} totalFeatures={features.length}/>
+                        } 
+                    </div>
+                    {features && features.map((feature) => 
+                        <button 
+                        onClick={() => { setSelectedFeature(feature) }}
+                        type="submit"
+                        >Feature {feature.number}</button>
+                        )
+                    }
+                </div>
             </div>
+            </>
+            }   
         </div>
         </>
     )
