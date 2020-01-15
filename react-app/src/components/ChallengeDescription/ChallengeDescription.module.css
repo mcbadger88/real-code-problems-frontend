@@ -1,0 +1,13 @@
+.challengeDescription {
+    height: 60%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #F0F5FC;
+    border-radius: 10px;
+    overflow: scroll;
+    padding: 30px 45px;
+}
+
+.challengeDescription p {
+    padding-left: 10px;
+    padding-top: 10px;
+}

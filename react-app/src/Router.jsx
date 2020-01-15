@@ -15,7 +15,7 @@ import SignUp from './pages/SignUp'
 const Router = ({user}) => {return (
   
     <Switch>
-        <ProtectedRoute
+        <Route
           exact path='/challenges'
           user={user} component={BrowseChallenges}
         />
@@ -36,7 +36,7 @@ const Router = ({user}) => {return (
           exact path='/challenges/:id/attempts/:id/edit'
           component={SubmitSubmission}
         />
-        <ProtectedRoute
+        <Route
           exact path='/candidates/:id/attempts'
           user={user} component={MyChallengeSubmissions}
         />
@@ -44,9 +44,9 @@ const Router = ({user}) => {return (
           exact path='/challenges/:id/attempts'
           component={ViewAllChallengeSubmissions}
         />
-        <ProtectedRoute
-          exact path='/candidates/user/:id'
-          user={user} component={CandidateProfile}
+        <Route
+          exact path='/candidates/:id'
+          component={CandidateProfile}
         />
 
         <Route
@@ -63,10 +63,11 @@ const Router = ({user}) => {return (
           render={() => <h1>You don't have the right to access this page! Please Login!</h1>}
         />
 
-        {/* <ProtectedRoute
+        <Route
+
           exact path='/candidate/new'
           user={user} component={CandidateProfileNew}
-        /> */}
+        /> 
 
       <ProtectedRoute
           exact path='/candidates/:id/edit'
