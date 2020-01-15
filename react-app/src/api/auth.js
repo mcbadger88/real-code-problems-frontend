@@ -1,10 +1,16 @@
+import wait from "../utils/wait"
+
 class Auth {
     constructor() {
-        this.authenticated = false
+        this.authenticated = true
+        this.fetching = true
     }
 
-    login(cb) {
-        this.authenticated = true
+    async login (cb) {
+        await wait (1000)
+        this.fetching = false
+        await wait(1000)
+       this.authenticated = true
         cb()
     }
 

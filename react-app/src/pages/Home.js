@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../components/NavBar/NavBar.jsx'
 
-const Home = () => {
+const Home = (props) => {
     return (
         <>
-        <NavBar />
+        <NavBar {...props}/>
         <h1>HOME HERE !</h1>
         </>
     )

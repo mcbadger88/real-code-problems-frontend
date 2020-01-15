@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom'
 import ProtectedRoute from './ProtectedRoute'
-import CandidateProfileNew from './pages/CandidateProfileNew'
+import EditCandidateProfile from './pages/EditCandidateProfile'
 import BrowseChallenges from './pages/BrowseChallenges'
 import ViewSingleChallenge from './pages/ViewSingleChallenge'
 import SubmitSubmission from './pages/SubmitSubmission'
@@ -12,12 +12,14 @@ import AddChallenge from './pages/AddChallenge'
 import Home from './pages/Home'
 import SignUp from './pages/SignUp'
 
-const Router = () => (
+const Router = ({user}) => {return (
+  
     <Switch>
         <Route
           exact path='/challenges'
-          component={BrowseChallenges}
+          user={user} component={BrowseChallenges}
         />
+
         <Route
           exact path='/challenges/new'
           component={AddChallenge}
@@ -36,7 +38,7 @@ const Router = () => (
         />
         <Route
           exact path='/candidates/:id/attempts'
-          component={MyChallengeSubmissions}
+          user={user} component={MyChallengeSubmissions}
         />
         <Route
           exact path='/challenges/:id/attempts'
@@ -53,8 +55,7 @@ const Router = () => (
         />
 
         <Route
-          exact path='/'
-          component={Home}
+          exact path='/' render={(props) => (<Home user={user} {...props}/>)}
         />
 
         <Route 
@@ -63,9 +64,23 @@ const Router = () => (
         />
 
         <Route
+
           exact path='/candidate/new'
-          component={CandidateProfileNew}
+          user={user} component={CandidateProfileNew}
+        /> 
+
+      <ProtectedRoute
+          exact path='/candidates/:id/edit'
+          user={user} component={EditCandidateProfile}
         />
+
+        
+
+        <Route
+          exact path='/profilecreated'
+          render={()=><p>Profile Created</p>}
+        />
+
     </Switch>
-    )
+    )}
 export default Router 
