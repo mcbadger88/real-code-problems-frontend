@@ -37,6 +37,7 @@ class AttemptCard extends React.Component{
                 </td>
 
                 <td className={styles.tableData} id={styles.rightRoundedEdges}> 
+                {/* Waiting on button style, need clarification on routes too. */}
                     <button>Edit</button> 
                     <button>delete</button>
                 </td>
