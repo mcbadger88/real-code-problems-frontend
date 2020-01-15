@@ -38,7 +38,7 @@ const allTestLines = [
     }
 ];
 
-const allFeatures = [
+export const allFeatures = [
     {
         title: "Can create blog posts",
         number: 1,

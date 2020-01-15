@@ -1,0 +1,13 @@
+
+.helperImage {
+    width: 100%;
+}
+
+.scenarioContainer {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.testLineContainer {
+    display: flex;
+}
