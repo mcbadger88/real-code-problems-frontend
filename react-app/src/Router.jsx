@@ -45,8 +45,8 @@ const Router = ({user}) => {return (
           component={ViewAllChallengeSubmissions}
         />
         <Route
-          exact path='/candidates/:id'
-          component={CandidateProfile}
+          exact path='/candidates/user/:id'
+          render={(props) => {return <CandidateProfile user={user} {...props}/>}}
         />
 
         <Route
@@ -63,11 +63,11 @@ const Router = ({user}) => {return (
           render={() => <h1>You don't have the right to access this page! Please Login!</h1>}
         />
 
-        <Route
+        {/* <Route
 
           exact path='/candidate/new'
           user={user} component={CandidateProfileNew}
-        /> 
+        />  */}
 
       <ProtectedRoute
           exact path='/candidates/:id/edit'
@@ -76,10 +76,10 @@ const Router = ({user}) => {return (
 
         
 
-        <Route
+        {/* <Route
           exact path='/profilecreated'
           render={()=><p>Profile Created</p>}
-        />
+        /> */}
 
     </Switch>
     )}

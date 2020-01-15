@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
-import { candidates } from '../../api/candidate';
 
 const EditCandidateProfileForm = (props) => {
 
@@ -8,14 +7,11 @@ const EditCandidateProfileForm = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({...candidateProfile})
-        
-        let response = await axios.put(`http://localhost:5000/candidates/${props.user._id}`, {...candidateProfile},{
+        let response = await axios.put(`http://localhost:5000/candidates/${props.match.params.id}`, {...candidateProfile},{
             withCredentials: true
           })
         
-        console.log(response)
-        props.history.push('/profilecreated')
+        props.history.push(`/candidates/user/${props.user._id}`)
     }
 
     const handleInputChange = (e) => {
@@ -40,7 +36,7 @@ const EditCandidateProfileForm = (props) => {
         
     }, [])
 
-    console.log('rendered')
+    console.log('rendered', props)
 
     return(
     <div>
@@ -72,7 +68,7 @@ const EditCandidateProfileForm = (props) => {
 
         <label>
             Bio:
-            <input onChange={handleInputChange} type="text" name="bio" vaule={candidateProfile.bio} placeholder={`${candidateProfile.username}`}/>
+            <input onChange={handleInputChange} type="text" name="bio" vaule={candidateProfile.bio} placeholder={`${candidateProfile.bio}`}/>
         </label>
         <br />
 
