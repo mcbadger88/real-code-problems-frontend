@@ -7,6 +7,7 @@ const AttemptTableHeadings = () => {
     return(
         <tr>
             <th>Challenge</th>
+            <th>Developer</th>
             <th>Status</th>
             <th>Date Submitted</th>
             <th>Actions</th>

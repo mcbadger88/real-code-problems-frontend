@@ -1,0 +1,23 @@
+.cardContainer{
+    border-radius: 5px;
+    box-shadow: 1px 1.5px 1.5px 1px #aaaaaa;
+    margin: 0 0.5em 1em;
+    padding:0.25em;
+    background-color: #F0F5FC;
+}
+
+.bolded{
+    font-weight: 700;
+}
+
+.tableData{
+    padding: 1.5em;
+}
+
+#leftRoundedEdges{
+    border-radius: 5px 0 0 5px;
+}
+
+#rightRoundedEdges{
+    border-radius: 0 5px 5px 0;
+}

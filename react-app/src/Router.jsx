@@ -34,7 +34,7 @@ const Router = () => (
           exact path='/challenges/:id/attempts/:id/edit'
           component={SubmitSubmission}
         />
-        <ProtectedRoute
+        <Route
           exact path='/candidates/:id/attempts'
           component={MyChallengeSubmissions}
         />
@@ -42,7 +42,7 @@ const Router = () => (
           exact path='/challenges/:id/attempts'
           component={ViewAllChallengeSubmissions}
         />
-        <ProtectedRoute
+        <Route
           exact path='/candidates/:id'
           component={CandidateProfile}
         />
