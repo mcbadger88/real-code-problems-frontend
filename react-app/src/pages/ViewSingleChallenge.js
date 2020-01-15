@@ -6,6 +6,7 @@ import ChallengeDescription from '../components/ChallengeDescription/ChallengeDe
 import Feature from '../components/ChallengeFeature/ChallengeFeature'
 import ButtonArea from '../components/ChallengeButtonArea/ChallengeButtonArea'
 import { getSingleChallenge } from '../api/challenge'
+import {apiGetAttemptStatus} from '../api/attempt'
 
 
 
@@ -13,6 +14,8 @@ const ViewSingleChallenge = ({challengeID}) => {
     const [features, setFeatures] = useState(null)
     const [challenge, setChallenge] = useState(null)
     const [selectedFeature, setSelectedFeature] = useState(null)
+    const [challengeStatusChanged, setChallengeStatusChanged] = useState(false)
+    const [challengeAttemptStatus, setChallengeAttemptStatus] = useState(null)
 
     useEffect(() => {
         console.log(features)
@@ -34,6 +37,19 @@ const ViewSingleChallenge = ({challengeID}) => {
         setFeatures(feats)
     }, [])
 
+    //see if the current user has an attempt that is in progress, set variable challengeStarted if active attempt exists for this chalenge and user
+    useEffect(() => {
+        const getStatus = async () => {
+            const status = await apiGetAttemptStatus(challengeID)
+            setChallengeAttemptStatus(status)
+        }
+        getStatus()
+    }, [ challengeStatusChanged ])
+
+
+    const toggleChallengeStatusChanged = () => {
+        setChallengeStatusChanged(!challengeStatusChanged)
+    }
     // Challenge Container (60% width)
     // Left hand column container
     //  Subtask Container (make it 60%)
@@ -53,11 +69,11 @@ const ViewSingleChallenge = ({challengeID}) => {
         <div className={styles.container}>
             {challenge && 
             <>
-            <h1>{challenge.title}: Your Status</h1>
+            <h1>{challenge.title}: {challengeAttemptStatus}</h1>
             <div className={styles.contentArea}>
                 <div className={styles.leftHandContainer}>
                     <ChallengeDescription challenge={challenge}/>
-                    <ButtonArea challenge={challenge}/>
+                    <ButtonArea challenge={challenge} attemptStatus={challengeAttemptStatus} onChallengeStatusChange={toggleChallengeStatusChanged}/>
 
                 </div>
                 <div className={styles.rightHandContainer}>

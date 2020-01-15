@@ -7,7 +7,7 @@ const ChallengeDescription = ({challenge}) => {
         <div className={styles.challengeDescription}>
             <h2>Challenge: {challenge ? challenge.title : null }</h2>
             <h3>Stars: {challenge && challenge.features ? challenge.features.length : null}</h3>
-            <h4>Status: {challenge && challenge.active ? "Active" : "Inactive"}</h4>
+            <h4>Challenge {challenge && challenge.active ? "Enabled" : "Disabled"}</h4>
             <p>{challenge ? challenge.description : null}</p>
         </div>
     )

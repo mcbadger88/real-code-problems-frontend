@@ -31,10 +31,9 @@ export const getSingleChallenge = async (challengeID) => {
 }
 
 // Will use update /challenges/:id backend route
-export const disableChallenge = async (challengeID) => {
+export const apiSetChallengeEnabled = async (challengeID, enabled) => {
     // Temp, to be replaced with backend update API call to /challenges/:id
-    await wait(Math.floor(500 + Math.random() * 1500))
-    challenges[challengeID- 1].active = !challenges[challengeID- 1].active
+    challenges[challengeID- 1].active = enabled
     return challenges[challengeID- 1]
 }
 

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ChallengeButtonArea.module.css';
-import {isActiveAttempt, createAttempt} from '../../api/attempt'
-import {disableChallenge} from '../../api/challenge'
+import {apiCreateAttempt, apiSubmitAttempt} from '../../api/attempt'
+import {apiSetChallengeEnabled} from '../../api/challenge'
+import { Link } from 'react-router-dom';
 
-const ChallengeButtonArea = ({challenge}) => {
+const ChallengeButtonArea = ({challenge, attemptStatus, onChallengeStatusChange}) => {
     const [dockerFileLocation, setDockerFileLocation] = useState(null)
-    const [challengeStarted, setChallengeStarted] = useState(null)
-
     
     //call set dockerfile variable
     useEffect( async () => {
@@ -16,34 +15,27 @@ const ChallengeButtonArea = ({challenge}) => {
     //create attempt in response to start challenge button
     const startChallenge = async (challenge) => {
         //create apttempt
-        const success = await createAttempt(challenge._id)
+        const success = await apiCreateAttempt(challenge._id)
         //set challenge started
-        const started = await isActiveAttempt(challenge._id)
-        setChallengeStarted(!started)
+        onChallengeStatusChange()
+        // const started = await apiIsActiveAttempt(challenge._id)
+        // setChallengeStarted(!started)
     }
 
     // in response to disable challenge, create disableChallene() and call the challenge update route
+    const setChallengeEnabled = async (enabled) => {
+        const sucess = await apiSetChallengeEnabled(challenge.id, enabled)
+        onChallengeStatusChange()
+    }
 
-    //see if the current user has an attempt that is in progress, set variable challengeStarted if active attempt exists for this chalenge and user
-    useEffect( async () => {
-        const started = await isActiveAttempt(challenge._id)
-        setChallengeStarted(started)
-    }, [])
-
-    // create submitAttempt() in response to submit solution button, add *figure out what to do this weekend*
-
-    // in response to view submissions.. link to challenges/:id/attempts/
-
-
-
-
+    console.log(`attempt status ${attemptStatus}`)
 
     return (
         <>
         <div className={styles.buttonArea}> 
             <div className={styles.buttonAreaTop} >
                 {
-                    challengeStarted ? 
+                    attemptStatus === "STARTED" ? 
                     <>
                         <button 
                         onClick={() => { }}
@@ -51,7 +43,7 @@ const ChallengeButtonArea = ({challenge}) => {
                         >download zip file {dockerFileLocation}
                         </button>
                         <button 
-                            onClick={() => { }}
+                            onClick={() => { apiSubmitAttempt()}}
                             type="submit"
                             >Submit Solution
                         </button>
@@ -68,15 +60,20 @@ const ChallengeButtonArea = ({challenge}) => {
 
             </div>
             <div className={styles.buttonAreaBottom} >
+                <Link
+                    className={styles.link}
+                    to={`challenges/${challenge.id}/attempts/`}
+                >   
+                    <button 
+                        onClick={() => { }}
+                        type="submit"
+                        >View Submissions 
+                    </button>
+                </Link>
                 <button 
-                    onClick={() => { }}
+                    onClick={() => { setChallengeEnabled(!challenge.active)}}
                     type="submit"
-                    >View Submissions 
-                </button>
-                <button 
-                    onClick={() => { disableChallenge(challenge.id)}}
-                    type="submit"
-                    >Disable Challenge
+                    >(admin) {challenge.active ? "Disable" : "Enable"} Challenge
                 </button>
             </div>
         </div>
