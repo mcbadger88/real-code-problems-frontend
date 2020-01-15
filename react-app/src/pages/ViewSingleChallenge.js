@@ -9,7 +9,6 @@ import { getSingleChallenge } from '../api/challenge'
 import {apiGetAttemptStatus} from '../api/attempt'
 
 
-
 const ViewSingleChallenge = ({challengeID}) => {
     const [features, setFeatures] = useState(null)
     const [challenge, setChallenge] = useState(null)

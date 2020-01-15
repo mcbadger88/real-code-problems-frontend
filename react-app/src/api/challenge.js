@@ -10,6 +10,14 @@ const challenges = [
         zipFileLocation: "https://github.com/saramic/real-code-challenge-blog/archive/master.zip",
         active: true,
         features: [allFeatures[0]._id, allFeatures[1]._id]
+    },
+
+    {   id:2,
+        title: "Two Side Market Place",
+        description: "Make a a two-side market place",
+        zipFileLocation: "https://github.com/saramic/real-code-challenge-blog/archive/master.zip",
+        active: true,
+        features: [allFeatures[0]._id, allFeatures[1]._id]
     }
 ];
 

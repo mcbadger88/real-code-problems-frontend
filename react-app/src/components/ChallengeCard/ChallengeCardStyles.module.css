@@ -1,0 +1,7 @@
+.ChallengeCard {
+    border-radius: 5px;
+    box-shadow: 1px 1.5px 1.5px 1px #aaaaaa;
+    margin: 0 0.5em 1em;
+    padding:0.25em;
+    background-color: #F0F5FC;
+}
