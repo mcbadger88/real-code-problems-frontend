@@ -1,11 +1,11 @@
 import React from 'react';
 import EditCandidateProfileForm from '../components/EditCandidateProfileForm/EditCandidateProfileForm'
-
+import NavBar from '../components/NavBar/NavBar'
 const EditCandidateProfile = (props) => {
 
     return(
         <div>
-        <h1>This is the page we use to edit new candidate</h1>
+        <NavBar />
         <EditCandidateProfileForm {...props} />
         </div>
     )
