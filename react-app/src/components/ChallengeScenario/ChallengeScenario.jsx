@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ChallengeScenario.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 const ChallengeScenario = ({scenario}) => {
     const [selectedTestLine, setSelectedTestLine] = useState(null)
@@ -21,7 +24,7 @@ const ChallengeScenario = ({scenario}) => {
                      <button 
                          onClick={() => { toggleDisplayHelperImage(testLine) }}
                          type="submit"
-                         >{!selectedTestLine || selectedTestLine.lineNumber !== testLine.lineNumber ? ">" : "|"} 
+                         >{!selectedTestLine || selectedTestLine.lineNumber !== testLine.lineNumber ? <FontAwesomeIcon icon={faChevronRight}/> : <FontAwesomeIcon icon={faChevronDown}/>} 
                      </button>
                      <h4>Test Line {testLine && testLine.lineNumber} - {testLine && testLine.testString}</h4>  
                  </div>

@@ -50,8 +50,8 @@ class AttemptCard extends React.Component{
                 <td className={styles.tableData} id={styles.rightRoundedEdges}> 
                 {/* need clarification on route to delete attempt. */}
                     <div className={styles.buttonDiv}>
-                        <a className={styles.button} href="">delete</a>
-                        {this.resultsAvailable() ? <a className={styles.button} href={`/results/${this.props.attemptID}`}>view results</a> : null}
+                        <a href=""><button>delete</button></a>
+                        {this.resultsAvailable() ? <a href={`/results/${this.props.attemptID}`}><button className={styles.button} >view results</button></a> : null}
                     </div>
                 </td>
             </tr>
