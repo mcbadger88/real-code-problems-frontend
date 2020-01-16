@@ -1,10 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import Router from './Router'
+import axios from 'axios'
 
 function App() {
 
   // Local State
   const [loading, setLoading] = useState(false);
+
+  const [user, setUser] = useState(false)
+
+  useEffect(() => {
+
+    const getUserData = async () => {
+      try {
+        let response = await axios.get('http://localhost:5000/user/current', {
+          withCredentials: true
+        })
+        const user = response.data
+        setUser(user)
+        console.log(user, 'from App')
+      } catch(err) {
+        console.log(err)
+      }
+    }
+
+    getUserData()
+  }, [])
+
+  //the above code generate random userID from 1 to 2;
 
   // Hi! The idea for the function below is that it will hit a route in the backend when somebody loads the page for the first time or logs in.
 
@@ -30,7 +53,7 @@ function App() {
   return loading ? (
     <div>Loading...</div>
   ) : (
-      <Router />
+      <Router user={user}/>
   );
 }
 

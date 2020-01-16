@@ -21,10 +21,9 @@ const MyChallengeSubmissions = ({candidateID}) => {
         }
         getAttempts()
     }, []);
-
     return (
     <>
-        <NavBar />
+        <NavBar user={user}/>
         <div className={styles.tableContainer}>
             <h1>My Challenge Attempts</h1>
 
