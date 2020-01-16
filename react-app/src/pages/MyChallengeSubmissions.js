@@ -25,15 +25,18 @@ const MyChallengeSubmissions = ({candidateID}) => {
     return (
     <>
         <NavBar />
-        <div class={styles.tableContainer}>
+        <div className={styles.tableContainer}>
             <h1>My Challenge Attempts</h1>
 
             <table>
                 <AttemptTableHeadings/>
-                {submissions ? submissions.map(submission =>     
-                    // When submissions exist, successfully create a new table row and render an attempt card for each submission.
-                        <AttemptCard status={submission.status} challenge={submission.challenge_id.title} dateSubmitted={submission.updatedAt} candidate={submission.candidate_id}/>) : <p> Loading... </p>}
+                <tbody>
+                    {submissions ? submissions.map(submission =>     
+                        // When submissions exist, successfully create a new table row and render an attempt card for each submission.
+                            <AttemptCard status={submission.status} challenge={submission.challenge_id.title} dateSubmitted={submission.updatedAt} candidate={submission.candidate_id} challengeID={submission.challenge_id._id} attemptID={submission._id} username={submission.candidate_id.username}/>) : <tr> <p> Loading... </p></tr>}
+                </tbody>
             </table>
+
         </div>
     </>
     )

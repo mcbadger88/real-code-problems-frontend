@@ -5,6 +5,7 @@ import styles from './AttemptTableHeadings.module.css'
 const AttemptTableHeadings = () => {
 
     return(
+        <thead>
         <tr>
             <th>Challenge</th>
             <th>Developer</th>
@@ -12,6 +13,7 @@ const AttemptTableHeadings = () => {
             <th>Date Submitted</th>
             <th>Actions</th>
         </tr>
+        </thead>
     );
 }
 
