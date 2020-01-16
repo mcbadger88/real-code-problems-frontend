@@ -38,9 +38,9 @@ const ChallengeButtonArea = ({challenge, attemptStatus, onChallengeStatusChange}
                     attemptStatus === "STARTED" ? 
                     <>
                         <button 
-                        onClick={() => { }}
-                        type="submit"
-                        >download zip file {dockerFileLocation}
+                        onClick={() => window.open(`${dockerFileLocation}`) }
+                        type="submit" 
+                        >download zip file
                         </button>
                         <button 
                             onClick={() => { apiSubmitAttempt()}}
@@ -50,10 +50,10 @@ const ChallengeButtonArea = ({challenge, attemptStatus, onChallengeStatusChange}
                     </>
                     :
                     <>
-                        <button 
+                        <button className={styles.buttonStyle}
                         onClick={() => { startChallenge(challenge) }}
                         type="submit"
-                        >Start Challenge !
+                        > <p>start challenge!</p>
                         </button>
                     </>
                 }
@@ -62,15 +62,19 @@ const ChallengeButtonArea = ({challenge, attemptStatus, onChallengeStatusChange}
             <div className={styles.buttonAreaBottom} >
                 <Link
                     className={styles.link}
-                    to={`challenges/${challenge.id}/attempts/`}
-                >   
+                    to={`:id/attempts`}
+                >
+
                     <button 
+                        className={styles.buttonStyle}
                         onClick={() => { }}
                         type="submit"
                         >View Submissions 
                     </button>
+
                 </Link>
                 <button 
+                    className={styles.buttonStyle}
                     onClick={() => { setChallengeEnabled(!challenge.active)}}
                     type="submit"
                     >(admin) {challenge.active ? "Disable" : "Enable"} Challenge
