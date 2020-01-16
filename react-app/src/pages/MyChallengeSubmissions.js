@@ -23,7 +23,7 @@ const MyChallengeSubmissions = ({candidateID}) => {
     }, []);
     return (
     <>
-        <NavBar user={user}/>
+        <NavBar/>
         <div className={styles.tableContainer}>
             <h1>My Challenge Attempts</h1>
 
