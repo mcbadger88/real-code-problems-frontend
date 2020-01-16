@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
+import styles from '../EditCandidateProfileForm/EditCandidateProfileForm.module.css'
 
 const EditCandidateProfileForm = (props) => {
 
@@ -40,47 +41,36 @@ const EditCandidateProfileForm = (props) => {
 
     return(
     <div>
-    <p>Here we put the react form to create the candidate</p>
-    <form onSubmit={handleSubmit}>
+    <form className={styles.EditForm} onSubmit={handleSubmit}>
         <label>
             First Name
             <input onChange={handleInputChange} type="text" name="firstname" value={candidateProfile.firstname} placeholder="First Name" required/>
         </label>
-        <br />
+        
 
         <label>
             Last Name
             <input onChange={handleInputChange} type="text" name="lastname" value={candidateProfile.lastname} placeholder="Last Name" required/>
         </label>
-        <br />
+        
 
         <label>
             Git Hub
             <input type="text" name="github" value={candidateProfile.github} required/>
         </label>
-        <br />
 
         <label>
             Username:
             <input type="text" name="username" value={candidateProfile.username} required/>
         </label>
-        <br />
 
         <label>
             Bio:
-            <input onChange={handleInputChange} type="text" name="bio" vaule={candidateProfile.bio} placeholder={`${candidateProfile.bio}`}/>
+            <textarea onChange={handleInputChange} type="text" name="bio" vaule={candidateProfile.bio} placeholder={`${candidateProfile.bio}`}/>
         </label>
-        <br />
 
-        <button type="submit">Update</button>
+        <button className={styles.UpdateButton}type="submit">Update</button>
     </form>
-
-        <div>
-            <h2>Information provided and stored in state</h2>
-            {candidateProfile.firstname}
-            {candidateProfile.lastname}
-            {candidateProfile.bio}
-        </div>
 
     </div>
     )

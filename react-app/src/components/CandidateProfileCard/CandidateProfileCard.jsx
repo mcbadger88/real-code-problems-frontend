@@ -17,9 +17,10 @@ const CandidateProfileCard = ({foundCandidateProfile, history, ...rest}) => {
         <div className={styles.ProfileInfoContainer}>
             <p>First Name: {foundCandidateProfile.firstname}</p>   
             <p>Last Name: {foundCandidateProfile.lastname}</p>
-            <p>Bio: {foundCandidateProfile.bio}</p>   
+             
             <p>Github Account: {foundCandidateProfile.github}</p>
             <p>Linkedin:{foundCandidateProfile.linkedin}</p>
+            <p>Bio: {foundCandidateProfile.bio}</p>  
         </div>    
         
         <div className={styles.PhotoArea}>
