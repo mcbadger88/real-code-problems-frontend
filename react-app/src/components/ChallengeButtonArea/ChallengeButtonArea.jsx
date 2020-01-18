@@ -82,19 +82,15 @@ const ChallengeButtonArea = ({challenge, attemptStatus, onChallengeStatusChange}
 
             </div>
             <div className={styles.buttonAreaBottom} >
-                <Link
-                    className={styles.link}
-                    to={`:id/attempts`}
-                >
-
+                <a className={styles.link} href={`${challenge.id}/attempts`}>
                     <button 
                         className={styles.buttonStyle}
                         onClick={() => { }}
                         type="submit"
                         >View Submissions 
                     </button>
-
-                </Link>
+                </a>
+                
                 <button 
                     className={styles.buttonStyle}
                     onClick={() => { setChallengeEnabled(!challenge.active)}}
