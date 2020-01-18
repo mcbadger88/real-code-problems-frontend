@@ -10,4 +10,17 @@
 
 .testLineContainer {
     display: flex;
+    align-items: center;
+}
+
+.testLineContainer p {
+    font-size: 14px;
+}
+
+.testLineContainer svg {
+    height: 10px;
+}
+
+.testLineContainer button {
+    padding: 1px;
 }

@@ -4,7 +4,7 @@ import { allFeatures } from './feature.js'
 // Challenges - the feature data is only passed by reference
 const challenges = [
     {
-        id: 1,
+        id: "d618a0cf-80f5-4368-acda-bd6f8f296ba0",
         title: "Blog Challenge",
         description: "Make a blog website in any stack of your choosing. It should have a landing page, page to add blog posts and the ability to search historical blog entries. <br> See the instructions to the right for more specifics on how to pass each feature of the challenge, good luck !",
         zipFileLocation: "https://github.com/saramic/real-code-challenge-blog/archive/master.zip",
@@ -12,7 +12,7 @@ const challenges = [
         features: [allFeatures[0]._id, allFeatures[1]._id]
     },
 
-    {   id:2,
+    {   id:"2",
         title: "Two Side Market Place",
         description: "Make a a two-side market place",
         zipFileLocation: "https://github.com/saramic/real-code-challenge-blog/archive/master.zip",
@@ -35,14 +35,14 @@ export const getSingleChallenge = async (challengeID) => {
     await wait(Math.floor(500 + Math.random() * 1500))
     console.log(`Challenges: ${challenges}`)
     console.log(`challengeID ${challengeID}`)
-    return challenges[challengeID- 1]
+    return challenges[0]
 }
 
 // Will use update /challenges/:id backend route
 export const apiSetChallengeEnabled = async (challengeID, enabled) => {
     // Temp, to be replaced with backend update API call to /challenges/:id
-    challenges[challengeID- 1].active = enabled
-    return challenges[challengeID- 1]
+    challenges[0].active = enabled
+    return challenges[0]
 }
 
 
