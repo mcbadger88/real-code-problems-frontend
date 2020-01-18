@@ -24,19 +24,6 @@ const ChallengeButtonArea = ({challenge, attemptStatus, onChallengeStatusChange}
         // setChallengeStarted(!started)
     }
 
-    const saveFile = async (e) => {
-        e.preventDefault()
-        const form = document.forms.namedItem('file-upload')
-        const data = new FormData(form)
-
-        try{
-            const response = await Axios.post('http://localhost:5000/candidate/5df865457947111ec1a81cad/attempts/5df865457947111ec1a81cb1/upload', data)
-
-        }catch(err) {
-            console.log(err)
-        }
-    }
-
     // in response to disable challenge, create disableChallene() and call the challenge update route
     const setChallengeEnabled = async (enabled) => {
         const sucess = await apiSetChallengeEnabled(challenge.id, enabled)
@@ -45,6 +32,24 @@ const ChallengeButtonArea = ({challenge, attemptStatus, onChallengeStatusChange}
 
     console.log(`attempt status ${attemptStatus}`)
 
+    // const saveFile = async (e) => {
+    //     e.preventDefault()
+    //     const form = document.forms.namedItem('file-upload')
+    //     const data = new FormData(form)
+
+    //     try{
+    //         const response = await Axios.post('http://localhost:5000/candidate/5df865457947111ec1a81cad/attempts/5df865457947111ec1a81cb1/upload', data)
+
+    //     }catch(err) {
+    //         console.log(err)
+    //     }
+    // }
+
+    //     {/* Hi! I know this looks messy, but it works!! we can clean but the styling but I'm tired and I'm gonna leave it here and go home. This means that we can upload zip files to s3 and send Micheal the URL to download them directly from amazon. Cool! */}
+    //     <form encType="multipart/form-data" name="file-upload" onSubmit={saveFile}>
+    //     <input type="file" name="image" id="image"/>
+    //     <button type="submit"> Submit </button>
+    // </form>
     return (
         <>
         <div className={styles.buttonArea}> 
@@ -57,12 +62,6 @@ const ChallengeButtonArea = ({challenge, attemptStatus, onChallengeStatusChange}
                         type="submit" 
                         >download zip file
                         </button>
-
-                        {/* Hi! I know this looks messy, but it works!! we can clean but the styling but I'm tired and I'm gonna leave it here and go home. This means that we can upload zip files to s3 and send Micheal the URL to download them directly from amazon. Cool! */}
-                        <form encType="multipart/form-data" name="file-upload" onSubmit={saveFile}>
-                            <input type="file" name="image" id="image"/>
-                            <button type="submit"> Submit </button>
-                        </form>
 
                         <button 
                             onClick={() => { apiSubmitAttempt()}}
