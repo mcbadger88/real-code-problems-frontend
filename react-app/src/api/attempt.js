@@ -3,7 +3,7 @@ import wait from '../utils/wait.js'
 const allAttempts = [
         {
             "status": "FAILED",
-            "_id": "5df865457947111ec1a81caf",
+            "_id": "100001",
             "candidate_id": {
                 "attempts": [
                     "5df865457947111ec1a81caf",
@@ -212,6 +212,7 @@ export const apiCreateAttempt = async (challengeID) => {
     return true
 }
 
+//delete?
 export const apiSubmitAttempt = async (challengeID, submissionFile) => {
     // Temp, to be replaced with backend API call?
     // Emma this weekend - **Figure out what to do and if I can use Michael's API here**
@@ -223,10 +224,10 @@ export const apiSubmitAttempt = async (challengeID, submissionFile) => {
 }
 
 // lookup attempts for challenge /:idtype/:id/attempts/, see if the current user has an attempt that is in progress 
-export const apiGetAttemptStatus = async (challengeID, userID) => {
+export const apiGetAttempt = async (challengeID, userID) => {
     // Temp, to be replaced with backend API call ? Can do a lookup of all attempts, find if I have one for my candidate ID and sere if it is active.
     await wait(Math.floor(100 + Math.random() * 500))
-    return allAttempts[0].status
+    return allAttempts[0]
 }
 
 export const getAllAttemptsForChallenge = async (challengeID) => {
