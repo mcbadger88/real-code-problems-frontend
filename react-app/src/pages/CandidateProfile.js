@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../components/NavBar/NavBar'
-import CandidateProfileCard from '../components/CandidateProfileCard'
+import CandidateProfileCard from '../components/CandidateProfileCard/CandidateProfileCard'
 import {Link} from 'react-router-dom'
-import {candidates} from '../api/candidate'
 import axios from 'axios';
 
 const CandidateProfile = (props) => {
@@ -12,11 +11,12 @@ const CandidateProfile = (props) => {
 
     useEffect( 
         ()=>{
+            console.log(props)
             async function getCandidateProfile () {
                 let response = await axios.get(`http://localhost:5000/candidates/user/${props.user._id}`, {
                     withCredentials: true
                 })
-                
+                // 
                 const {data} = response
                 setCandidateProfile(data)
                 
