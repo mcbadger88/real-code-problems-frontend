@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
 
-const ChallengeButtonArea = ({challenge, attemptStatus, onChallengeStatusChange}) => {
+const ChallengeButtonArea = ({challenge, attempt, onChallengeStatusChange}) => {
     const [dockerFileLocation, setDockerFileLocation] = useState(null)
     
     //call set dockerfile variable
@@ -30,7 +30,7 @@ const ChallengeButtonArea = ({challenge, attemptStatus, onChallengeStatusChange}
         onChallengeStatusChange()
     }
 
-    console.log(`attempt status ${attemptStatus}`)
+    console.log(`attempt status ${attempt.status}`)
 
     // const saveFile = async (e) => {
     //     e.preventDefault()
@@ -50,24 +50,28 @@ const ChallengeButtonArea = ({challenge, attemptStatus, onChallengeStatusChange}
     //     <input type="file" name="image" id="image"/>
     //     <button type="submit"> Submit </button>
     // </form>
+    console.log(`ChallengeButtonArea attemptID ${attempt._id}`)
     return (
         <>
         <div className={styles.buttonArea}> 
             <div className={styles.buttonAreaTop} >
                 {
-                    attemptStatus === "STARTED" ? 
+                    attempt.status === "STARTED" ? 
                     <>
                         <button 
                         onClick={() => window.open(`${dockerFileLocation}`) }
                         type="submit" 
                         >download zip file
                         </button>
-
-                        <button 
-                            onClick={() => { apiSubmitAttempt()}}
-                            type="submit"
-                            >Submit Solution
-                        </button>
+                        
+                        <a className={styles.link} href={`/challenges/${challenge.id}/attempts/${attempt._id}/edit`}>
+                            <button 
+                                className={styles.buttonStyle}
+                                onClick={() => { }}
+                                type="submit"
+                                >Submit Solution
+                            </button>
+                        </a>
                     </>
                     :
                     <>

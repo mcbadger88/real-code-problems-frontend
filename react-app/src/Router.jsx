@@ -34,8 +34,13 @@ const Router = ({user}) => {return (
           )}
         />
         <Route
-          exact path='/challenges/:id/attempts/:id/edit'
-          component={SubmitSubmission}
+          exact path='/challenges/:challID/attempts/:attemptID/edit'
+          render={({ location, match }) => (
+            <SubmitSubmission
+              challengeID={match.params.challID}
+              attemptID={match.params.attemptID}
+            />
+          )}
         />
         <Route
           exact path='/candidates/:id/attempts'
@@ -74,7 +79,7 @@ const Router = ({user}) => {return (
           user={user} component={CandidateProfileNew}
         /> 
 */}
-      <ProtectedRoute
+      <Route
           exact path='/candidates/:id/edit'
           user={user} component={EditCandidateProfile}
         />

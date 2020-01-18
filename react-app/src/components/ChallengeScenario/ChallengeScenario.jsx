@@ -26,7 +26,7 @@ const ChallengeScenario = ({scenario}) => {
                          type="submit"
                          >{!selectedTestLine || selectedTestLine.lineNumber !== testLine.lineNumber ? <FontAwesomeIcon icon={faChevronRight}/> : <FontAwesomeIcon icon={faChevronDown}/>} 
                      </button>
-                     <h4>Test Line {testLine && testLine.lineNumber} - {testLine && testLine.testString}</h4>  
+                     <p>Test Line {testLine && testLine.lineNumber} - {testLine && testLine.testString}</p>  
                  </div>
                  {
                  selectedTestLine && (selectedTestLine.lineNumber === testLine.lineNumber) && <img className={styles.helperImage} src={testLine.helperImage}></img>

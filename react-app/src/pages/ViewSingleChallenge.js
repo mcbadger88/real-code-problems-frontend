@@ -6,7 +6,7 @@ import ChallengeDescription from '../components/ChallengeDescription/ChallengeDe
 import Feature from '../components/ChallengeFeature/ChallengeFeature'
 import ButtonArea from '../components/ChallengeButtonArea/ChallengeButtonArea'
 import { getSingleChallenge } from '../api/challenge'
-import {apiGetAttemptStatus} from '../api/attempt'
+import {apiGetAttempt} from '../api/attempt'
 
 
 const ViewSingleChallenge = ({challengeID}) => {
@@ -14,7 +14,7 @@ const ViewSingleChallenge = ({challengeID}) => {
     const [challenge, setChallenge] = useState(null)
     const [selectedFeature, setSelectedFeature] = useState(null)
     const [challengeStatusChanged, setChallengeStatusChanged] = useState(false)
-    const [challengeAttemptStatus, setChallengeAttemptStatus] = useState(null)
+    const [challengeAttempt, setChallengeAttempt] = useState(null)
 
     useEffect(() => {
         console.log(features)
@@ -39,8 +39,8 @@ const ViewSingleChallenge = ({challengeID}) => {
     //see if the current user has an attempt that is in progress, set variable challengeStarted if active attempt exists for this chalenge and user
     useEffect(() => {
         const getStatus = async () => {
-            const status = await apiGetAttemptStatus(challengeID)
-            setChallengeAttemptStatus(status)
+            const attempt = await apiGetAttempt(challengeID)
+            setChallengeAttempt(attempt)
         }
         getStatus()
     }, [ challengeStatusChanged ])
@@ -49,6 +49,8 @@ const ViewSingleChallenge = ({challengeID}) => {
     const toggleChallengeStatusChanged = () => {
         setChallengeStatusChanged(!challengeStatusChanged)
     }
+
+    console.log("In ViewSingleChallenge")
     // Challenge Container (60% width)
     // Left hand column container
     //  Subtask Container (make it 60%)
@@ -66,13 +68,13 @@ const ViewSingleChallenge = ({challengeID}) => {
         <>
         <NavBar />
         <div className={styles.container}>
-            {challenge && 
+            {challenge && challengeAttempt &&
             <>
-            <h1>{challenge.title}: {challengeAttemptStatus}</h1>
+            <h1>{challenge.title}: {challengeAttempt.status}</h1>
             <div className={styles.contentArea}>
                 <div className={styles.leftHandContainer}>
                     <ChallengeDescription challenge={challenge}/>
-                    <ButtonArea challenge={challenge} attemptStatus={challengeAttemptStatus} onChallengeStatusChange={toggleChallengeStatusChanged}/>
+                    <ButtonArea challenge={challenge} attempt={challengeAttempt} onChallengeStatusChange={toggleChallengeStatusChanged}/>
 
                 </div>
                 <div className={styles.rightHandContainer}>
