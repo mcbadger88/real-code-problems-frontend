@@ -16,12 +16,12 @@ const NavBar = (props) => {
             </div>
             <ul className='links'>
 
-                <li><a className={styles.NavLink} to={"/candidates/:id/attempts"}>View my submissions</a></li>
+                <li><a className={styles.NavLink} href={"/candidates/:id/attempts"}>View my submissions</a></li>
                 <li><a className={styles.NavLink} href={"/challenges"}>Browse challenges</a></li>
-                {props.user ? <li><a className={styles.NavLink} to={`/candidates/user/${props.user._id}`}>Profile</a></li> : null}
+                {props.user ? <li><a className={styles.NavLink} href={`/candidates/user/${props.user._id}`}>Profile</a></li> : null}
                 {/* the above nav links to shall be dynamically generated after we get the user id from the top level */}
-                <li><a className={styles.NavLink} to={"/signup"}>Sign In</a></li>
-                <li ><a className={styles.NavLink} to={"/"} onClick={() => auth.logout()}> Sign Out</a></li>       
+                <li><a className={styles.NavLink} href={"/signup"}>Sign In</a></li>
+                <li ><a className={styles.NavLink} href={"/"} onClick={() => auth.logout()}> Sign Out</a></li>       
 
             </ul>
         </nav>
