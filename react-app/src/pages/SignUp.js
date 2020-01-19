@@ -4,6 +4,7 @@ import auth from '../api/auth'
 import Axios from 'axios';
 
 const SignUp = (props) => {
+    console.log(props)
     return(
         <>
         <NavBar />

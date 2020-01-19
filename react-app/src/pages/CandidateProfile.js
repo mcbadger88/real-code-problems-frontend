@@ -11,18 +11,17 @@ const CandidateProfile = (props) => {
 
     useEffect( 
         ()=>{
-            console.log(props)
+            console.log(props, 'why user in this case is undefined?')
             async function getCandidateProfile () {
                 let response = await axios.get(`http://localhost:5000/candidates/user/${props.user._id}`, {
                     withCredentials: true
                 })
-                // 
                 const {data} = response
                 setCandidateProfile(data)
                 
             } 
             getCandidateProfile()
-           
+            console.log(candidateProfile, 'getProfileAfter useEffects runs')
         }, []
     )
 
