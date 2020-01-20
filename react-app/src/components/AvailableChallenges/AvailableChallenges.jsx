@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {getAllChallenges} from '../../api/challenge.js'
 import ChallengeCard from '../ChallengeCard/ChallengeCard'
+import styles from '../AvailableChallenges/AvailableChallenges.module.css'
 
 class AvailableChallenges extends Component {
 
@@ -24,9 +25,13 @@ class AvailableChallenges extends Component {
                 (challenge) => {return <ChallengeCard key={challenge.id} data={challenge}/>}
                 )
 
-            return (challengeList)
+            return (
+                <div className={styles.AvailableChallenges}>
+                {challengeList}
+                </div>
+                )
         }else{
-            return (<h2>Loading</h2>)
+            return (<h2 className={styles.LoadingText}>Loading</h2>)
         }
     }
 }

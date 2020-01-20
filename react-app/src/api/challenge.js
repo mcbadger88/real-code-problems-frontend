@@ -19,7 +19,14 @@ const challenges = [
         zipFileLocation: "https://github.com/saramic/real-code-challenge-blog/archive/master.zip",
         active: true,
         features: [allFeatures[0]._id, allFeatures[1]._id]
-    }
+    },
+    {   id:"3",
+    title: "Speed Type Writer App ",
+    description: "Use ReactJS to make a Speed Type Writer",
+    zipFileLocation: "https://github.com/saramic/real-code-challenge-blog/archive/master.zip",
+    active: true,
+    features: [allFeatures[0]._id, allFeatures[1]._id]
+}
 ];
 
 

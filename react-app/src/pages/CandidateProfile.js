@@ -11,18 +11,19 @@ const CandidateProfile = (props) => {
 
     useEffect( 
         ()=>{
-            console.log(props)
+            console.log(props, 'why user in this case is undefined?')
             async function getCandidateProfile () {
                 let response = await axios.get(`http://localhost:5000/candidates/user/${props.user._id}`, {
                     withCredentials: true
                 })
-                // 
                 const {data} = response
                 setCandidateProfile(data)
+                console.log(data, 'check data')
+
                 
             } 
             getCandidateProfile()
-           
+            console.log(candidateProfile, 'getProfileAfter useEffects runs')
         }, []
     )
 
@@ -30,7 +31,8 @@ const CandidateProfile = (props) => {
         <>
         <NavBar user={props.user}/>
         <h1>CandidateProfile Page HERE !</h1>
-        {candidateProfile ? <CandidateProfileCard {...props} foundCandidateProfile={candidateProfile}/> : <p><Link to='/candidate/new'>No Profile Yet. Create your profile</Link></p>}
+        {candidateProfile ? <CandidateProfileCard {...props} foundCandidateProfile={candidateProfile}/> : 
+        <p><Link to='/candidate/new'>No Profile Yet. Create your profile</Link></p>}
         </>
     )
 }
