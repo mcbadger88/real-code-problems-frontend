@@ -17,7 +17,7 @@ class AvailableChallenges extends Component {
     }
 
     render() {
-
+        console.log(this.state.data)
         if (this.state.data !== null) {
             const challenges = this.state.data
             const challengeList = challenges.map(
