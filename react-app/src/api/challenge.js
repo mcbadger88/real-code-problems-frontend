@@ -27,6 +27,10 @@ export const getAllChallenges = async () => {
     await wait(Math.floor(500 + Math.random() * 1500))
     console.log(`Challenges: ${challenges}`)
     return challenges
+
+    // let apiCall = await Axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/challenges`)
+    // let challenges = JSON.parse(apiCall.request.response)
+    // return challenges
 }
 
 // Will use /challenges/:id backend route
