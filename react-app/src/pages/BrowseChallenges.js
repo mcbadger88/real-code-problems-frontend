@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './BrowseChallenges.module.css'
 import NavBar from '../components/NavBar/NavBar'
-import AvailableChanllenges from '../components/AvailableChallenges/AvailableChallenges'
+import AvailableChallenges from '../components/AvailableChallenges/AvailableChallenges'
 
 const BrowseChallenges = ({user}) => {
     return (

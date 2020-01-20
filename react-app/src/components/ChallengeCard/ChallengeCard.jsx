@@ -6,7 +6,7 @@ import { faBuilding } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
  const ChallengeCard = (props) => {
-    //  console.log(props.data);
+     console.log(props.data);
    
     return (
         <div className={styles.ChallengeCard}>
@@ -25,6 +25,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
                 </p>
             </div>
             <NavLink className={styles.buttonLink} to={`challenges/${props.data.id}`}>More details</NavLink>
+
         </div>
     )
 }
