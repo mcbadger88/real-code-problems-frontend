@@ -1,5 +1,6 @@
 import wait from '../utils/wait.js'
 import { allFeatures } from './feature.js'
+import Axios from 'axios'
 
 // Challenges - the feature data is only passed by reference
 const challenges = [
@@ -23,14 +24,9 @@ const challenges = [
 
 
 export const getAllChallenges = async () => {
-    // Temp, to be replaced with backend API call to /challenges
-    await wait(Math.floor(500 + Math.random() * 1500))
-    console.log(`Challenges: ${challenges}`)
+    let apiCall = await Axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/challenges`)
+    let challenges = JSON.parse(apiCall.request.response)
     return challenges
-
-    // let apiCall = await Axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/challenges`)
-    // let challenges = JSON.parse(apiCall.request.response)
-    // return challenges
 }
 
 // Will use /challenges/:id backend route
