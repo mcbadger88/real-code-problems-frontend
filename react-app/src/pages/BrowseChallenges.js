@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styles from './BrowseChallenges.module.css'
 import NavBar from '../components/NavBar/NavBar'
 import AvailableChallenges from '../components/AvailableChallenges/AvailableChallenges'

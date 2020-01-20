@@ -10,8 +10,12 @@ const ChallengeButtonArea = ({challenge, attempt, onChallengeStatusChange}) => {
     const [dockerFileLocation, setDockerFileLocation] = useState(null)
     
     //call set dockerfile variable
-    useEffect( async () => {
-        setDockerFileLocation(challenge.zipFileLocation)
+    useEffect(() => {
+        async function callSetDockerFileLocation(){
+            setDockerFileLocation(challenge.zipFileLocation)
+        }
+
+        callSetDockerFileLocation()
     }, [])
 
     //create attempt in response to start challenge button

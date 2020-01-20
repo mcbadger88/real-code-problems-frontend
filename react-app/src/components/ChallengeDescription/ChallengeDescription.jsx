@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './ChallengeDescription.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import uuid from 'uuid/v1'
 
 const ChallengeDescription = ({challenge}) => {
 
@@ -9,7 +10,7 @@ const ChallengeDescription = ({challenge}) => {
         let allStars = []
         let times = challenge.features.length;
         for(let i=0; i < times; i++){
-            allStars.push(<FontAwesomeIcon icon={faStar} />);
+            allStars.push(<FontAwesomeIcon key={i} icon={faStar} />);
         }
         return allStars
     }

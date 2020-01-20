@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import styles from '../ChallengeCard/ChallengeCardStyles.module.css'
 import {NavLink} from 'react-router-dom'
 import { faStar } from '@fortawesome/free-solid-svg-icons'

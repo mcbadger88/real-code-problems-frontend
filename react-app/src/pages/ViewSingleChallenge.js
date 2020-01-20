@@ -21,19 +21,21 @@ const ViewSingleChallenge = ({challengeID}) => {
 
     }, [ features ])
 
-    useEffect( async () => {
-        // Replace with API call
-        // getAllChallenges().then(response => {
-        //   setChallenges(response)
-        // })
-        const chall = await getSingleChallenge(challengeID)
-        setChallenge(chall)
+    useEffect(() => {
+        const getChallenge = async() => {
+            const chall = await getSingleChallenge(challengeID)
+            setChallenge(chall)
+        }
+        getChallenge()
       }, [ ])
 
-    useEffect( async () => {
-        const feats = await getFeatures(challengeID)
-        console.log(`features ${feats}`)
-        setFeatures(feats)
+    useEffect(() => {
+        const getAllFeatures = async () => {
+            const feats = await getFeatures(challengeID)
+            console.log(`features ${feats}`)
+            setFeatures(feats)
+        }
+        getAllFeatures()
     }, [])
 
     //see if the current user has an attempt that is in progress, set variable challengeStarted if active attempt exists for this chalenge and user
@@ -84,7 +86,7 @@ const ViewSingleChallenge = ({challengeID}) => {
                         } 
                     </div>
                     {features && features.map((feature) => 
-                        <button 
+                        <button key={feature._id}
                         onClick={() => { setSelectedFeature(feature) }}
                         type="submit"
                         >Feature {feature.number}</button>

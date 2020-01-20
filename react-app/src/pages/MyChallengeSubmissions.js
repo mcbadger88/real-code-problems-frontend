@@ -32,7 +32,7 @@ const MyChallengeSubmissions = ({candidateID}) => {
                 <tbody>
                     {submissions ? submissions.map(submission =>     
                         // When submissions exist, successfully create a new table row and render an attempt card for each submission.
-                            <AttemptCard status={submission.status} challenge={submission.challenge_id.title} dateSubmitted={submission.updatedAt} candidate={submission.candidate_id} challengeID={submission.challenge_id._id} attemptID={submission._id} username={submission.candidate_id.username}/>) : <tr> <p> Loading... </p></tr>}
+                            <AttemptCard key={submission._id} status={submission.status} challenge={submission.challenge_id.title} dateSubmitted={submission.updatedAt} candidate={submission.candidate_id} challengeID={submission.challenge_id._id} attemptID={submission._id} username={submission.candidate_id.username}/>) : <tr> <p> Loading... </p></tr>}
                 </tbody>
             </table>
 

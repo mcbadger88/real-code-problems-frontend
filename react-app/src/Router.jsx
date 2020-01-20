@@ -46,7 +46,11 @@ const Router = ({user}) => {
         />
         <Route
           exact path='/candidates/:id/attempts'
-          user={user} component={MyChallengeSubmissions}
+          render={({match}) => (
+            <MyChallengeSubmissions
+              challengeID={match.params.challengeID}
+            />
+          )}
         />
         <Route
           exact path='/challenges/:id/attempts'

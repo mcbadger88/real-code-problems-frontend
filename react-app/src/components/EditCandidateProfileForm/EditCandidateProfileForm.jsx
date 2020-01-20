@@ -8,7 +8,8 @@ const EditCandidateProfileForm = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let response = await axios.put(`http://localhost:5000/candidates/${props.match.params.id}`, {...candidateProfile},{
+        //Put this API call in the right folder.
+        await axios.put(`${process.env.REACT_APP_BACKEND_BASE_URL}/${props.match.params.id}`, {...candidateProfile},{
             withCredentials: true
           })
         
