@@ -10,12 +10,12 @@ const BrowseChallenges = ({user}) => {
         <h1 className={styles.PageTitle}>Welcome !</h1>
         <div>
             <h2 className={styles.CardTitle}>Featured challenges</h2>
-            <AvailableChanllenges />
+            <AvailableChallenges />
         </div>
 
         <div>
             <h2 className={styles.CardTitle}>View all</h2>
-            <AvailableChanllenges />
+            <AvailableChallenges />
         </div>
         </>
     )

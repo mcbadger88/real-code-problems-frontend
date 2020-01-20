@@ -22,7 +22,7 @@ class AvailableChallenges extends Component {
         if (this.state.data !== null) {
             const challenges = this.state.data
             const challengeList = challenges.map(
-                (challenge) => {return <ChallengeCard key={challenge.id} data={challenge}/>}
+                (challenge) => {return <ChallengeCard key={challenge._id} data={challenge}/>}
                 )
 
             return (
