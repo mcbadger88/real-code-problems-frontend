@@ -18,6 +18,8 @@ const CandidateProfile = (props) => {
                 })
                 const {data} = response
                 setCandidateProfile(data)
+                console.log(data, 'check data')
+
                 
             } 
             getCandidateProfile()
@@ -29,7 +31,8 @@ const CandidateProfile = (props) => {
         <>
         <NavBar user={props.user}/>
         <h1>CandidateProfile Page HERE !</h1>
-        {candidateProfile ? <CandidateProfileCard {...props} foundCandidateProfile={candidateProfile}/> : <p><Link to='/candidate/new'>No Profile Yet. Create your profile</Link></p>}
+        {candidateProfile ? <CandidateProfileCard {...props} foundCandidateProfile={candidateProfile}/> : 
+        <p><Link to='/candidate/new'>No Profile Yet. Create your profile</Link></p>}
         </>
     )
 }

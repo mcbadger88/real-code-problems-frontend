@@ -31,7 +31,7 @@ class AvailableChallenges extends Component {
                 </div>
                 )
         }else{
-            return (<h2>Loading</h2>)
+            return (<h2 className={styles.LoadingText}>Loading</h2>)
         }
     }
 }

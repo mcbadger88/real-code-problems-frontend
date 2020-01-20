@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from './BrowseChallenges.module.css'
 import NavBar from '../components/NavBar/NavBar'
 import AvailableChanllenges from '../components/AvailableChallenges/AvailableChallenges'
 
@@ -6,14 +7,14 @@ const BrowseChallenges = ({user}) => {
     return (
         <>
         <NavBar user={user}/>
-        <h1>Welcome !</h1>
+        <h1 className={styles.PageTitle}>Welcome !</h1>
         <div>
-            <h2 >Featured challenges</h2>
+            <h2 className={styles.CardTitle}>Featured challenges</h2>
             <AvailableChanllenges />
         </div>
 
         <div>
-            <h2>View all</h2>
+            <h2 className={styles.CardTitle}>View all</h2>
             <AvailableChanllenges />
         </div>
         </>
