@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './BrowseChallenges.module.css'
 import NavBar from '../components/NavBar/NavBar'
-import AvailableChanllenges from '../components/AvailableChallenges/AvailableChallenges'
+import AvailableChallenges from '../components/AvailableChallenges/AvailableChallenges'
 
 const BrowseChallenges = ({user}) => {
     return (
@@ -10,12 +10,12 @@ const BrowseChallenges = ({user}) => {
         <h1 className={styles.PageTitle}>Welcome !</h1>
         <div>
             <h2 className={styles.CardTitle}>Featured challenges</h2>
-            <AvailableChanllenges />
+            <AvailableChallenges />
         </div>
 
         <div>
             <h2 className={styles.CardTitle}>View all</h2>
-            <AvailableChanllenges />
+            <AvailableChallenges />
         </div>
         </>
     )
