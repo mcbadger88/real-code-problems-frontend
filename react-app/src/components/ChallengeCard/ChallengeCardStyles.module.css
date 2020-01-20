@@ -1,4 +1,6 @@
 .ChallengeCard {
+    position: relative;
+    width:23em;
     flex:0 0 auto;
     border-radius: 5px;
     box-shadow: 1px 1.5px 1.5px 1px #aaaaaa;
@@ -26,6 +28,9 @@
 .buttonLink {
     /* margin-left:auto;
     margin-right:auto; */
+    position:absolute;
+    left:0.75em;
+    bottom:0.75em;
     font-weight: bold;
     margin-top:1em;
     padding:0.5em;
