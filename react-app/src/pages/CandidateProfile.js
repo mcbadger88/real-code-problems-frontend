@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const CandidateProfile = (props) => {
 
-
+    console.log(props)
     const [candidateProfile, setCandidateProfile] = useState(null)
 
     useEffect( 
