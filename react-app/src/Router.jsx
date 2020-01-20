@@ -54,7 +54,7 @@ const Router = ({user}) => {
         />
         <Route
           exact path='/candidates/user/:id'
-          render={(props) => {return <CandidateProfile user={user} />}}
+          render={(props) => {return <CandidateProfile user={user} {...props}/>}}
         />
 
         <Route
