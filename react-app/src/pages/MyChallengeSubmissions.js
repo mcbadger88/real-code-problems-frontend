@@ -6,26 +6,20 @@ import styles from './MyChallengeSubmissions.module.css'
 import AttemptTableHeadings from '../components/AttemptTableHeadings/AttemptTableHeadings';
 
 
-const MyChallengeSubmissions = ({candidateID, appState}) => {
+const MyChallengeSubmissions = ({user, candidateID, appState}) => {
     const [submissions, setSubmissions] = useState(null);
-
-    // const [candidateId, setCandidateId] = useState(null);
     
     //API call goes here.
     useEffect(() => {
-        console.log(appState.candidateID)
-        console.log(candidateID)
         const getAttempts = async() => {
-            const subs = await getMyAttempts(candidateID)
-            console.log(subs[0].status)
+            const subs = await getMyAttempts(appState.candidateID)
             setSubmissions(subs)
-
         }
         getAttempts()
     }, []);
     return (
     <>
-        <NavBar/>
+        <NavBar appState={appState}/>
         <div className={styles.tableContainer}>
             <h1>My Challenge Attempts</h1>
 

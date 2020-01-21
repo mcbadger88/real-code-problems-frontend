@@ -6,6 +6,7 @@ import auth from '../../api/auth'
 import { useEffect } from 'react';
 
 const NavBar = (props) => {
+    console.log('props are here!!!!')
     console.log(props)
 
     return(

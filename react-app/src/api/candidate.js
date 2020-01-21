@@ -1,4 +1,4 @@
-
+import Axios from 'axios'
 
 export let candidates = [
 
@@ -24,3 +24,10 @@ export let candidates = [
     attempts:"",
     username:""}
 ]
+
+export const lookupCandidateID = async (userID) => {
+    let url = `${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/user/${userID}`
+    let apiCall = await Axios.get(url)
+    let candidate = JSON.parse(apiCall.request.response)
+    return candidate
+}
