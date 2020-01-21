@@ -13,8 +13,10 @@ import AddChallenge from './pages/AddChallenge'
 import Home from './pages/Home'
 import SignUp from './pages/SignUp'
 
-const Router = ({user}) => {return (
-  
+const Router = ({user}) => {
+  console.log(user, 'user from router');
+  return (
+    
     <Switch>
         <Route
           exact path='/challenges'
@@ -29,6 +31,7 @@ const Router = ({user}) => {return (
           exact path='/challenges/:id'
           render={({ location, match }) => (
             <ViewSingleChallenge
+              user={user} 
               challengeID={match.params.id}
             />
           )}
@@ -37,6 +40,7 @@ const Router = ({user}) => {return (
           exact path='/challenges/:challID/attempts/:attemptID/edit'
           render={({ location, match }) => (
             <SubmitSubmission
+              user={user} 
               challengeID={match.params.challID}
               attemptID={match.params.attemptID}
             />
@@ -52,7 +56,7 @@ const Router = ({user}) => {return (
         />
         <Route
           exact path='/candidates/user/:id'
-          render={(props) => {return <CandidateProfile user={user} {...props}/>}}
+          render={(props) => {return <CandidateProfile user={user} />}}
         />
 
         <Route
@@ -61,7 +65,7 @@ const Router = ({user}) => {return (
         />
 
         <Route
-          exact path='/' render={(props) => (<Home user={user} {...props}/>)}
+          exact path='/' render={(props) => (<BrowseChallenges user={user}/>)}
         />
 
         <Route
