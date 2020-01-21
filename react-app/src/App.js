@@ -5,9 +5,11 @@ import axios from 'axios'
 function App() {
 
   // Local State
-  const [loading, setLoading] = useState(false);
 
-  const [user, setUser] = useState(false)
+  const [user, setUser] = useState({
+    auth: false,
+    loading: true
+  })
 
   useEffect(() => {
 
@@ -17,8 +19,10 @@ function App() {
           withCredentials: true
         })
         const user = response.data
-        setUser(user)
-        console.log(user, 'from App')
+        setUser({
+          loading: false,
+          auth: user
+        })
       } catch(err) {
         console.log(err)
       }
@@ -49,11 +53,11 @@ function App() {
 
   //   console.log(this.state)
   // }
-
-  return loading ? (
+  console.log(user.auth)
+  return user.loading ? (
     <div>Loading...</div>
   ) : (
-      <Router user={user}/>
+      <Router user={user.auth}/>
   );
 }
 
