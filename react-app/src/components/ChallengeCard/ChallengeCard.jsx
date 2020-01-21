@@ -24,7 +24,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
                     Fresho
                 </p>
             </div>
-            <NavLink className={styles.buttonLink} to={`challenges/${props.data.id}`}>More details</NavLink>
+            <NavLink className={styles.buttonLink} to={`challenges/${props.data.externalIdentifier}`}>More details</NavLink>
 
         </div>
     )
