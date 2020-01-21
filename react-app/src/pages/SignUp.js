@@ -10,9 +10,9 @@ const SignUp = (props) => {
         <NavBar />
         <h2>This is the Signup Page</h2>
         <br />
-        <a href={`http://localhost:5000/user/gitauth`}>Log in with github</a>
+        <a href={`${process.env.REACT_APP_BACKEND_BASE_URL}/user/gitauth`}>Log in with github</a>
         <br />
-        <a href={`http://localhost:5000/user/logout`}>Log out</a>
+        <a href={`${process.env.REACT_APP_BACKEND_BASE_URL}/user/logout`}>Log out</a>
         </>
     )
 }

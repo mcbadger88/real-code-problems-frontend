@@ -1,4 +1,5 @@
 import wait from "../utils/wait"
+import Axios from 'axios'
 
 class Auth {
     constructor() {
@@ -23,5 +24,30 @@ class Auth {
     }
 
 }
+
+
+export const checkCurrentUser = async () => {
+    let apiCall = await Axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/user/current`, {
+        withCredentials: true
+    })
+    let user = apiCall.data
+    return user
+}
+
+//   const user = response.data
+//   setUser({
+//     loading: false,
+//     auth: user
+//   })
+//   console.log(user)
+
+// } catch(err) {
+//   setUser({
+//     loading: false,
+//     auth: false
+//   })
+  
+//   console.log(err.response)
+// }
 
 export default new Auth()

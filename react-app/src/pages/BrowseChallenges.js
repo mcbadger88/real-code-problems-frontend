@@ -3,10 +3,12 @@ import styles from './BrowseChallenges.module.css'
 import NavBar from '../components/NavBar/NavBar'
 import AvailableChallenges from '../components/AvailableChallenges/AvailableChallenges'
 
-const BrowseChallenges = ({user}) => {
+const BrowseChallenges = ({user, appState}) => {
+    console.log('browse challs')
+    console.log(appState)
     return (
         <>
-        <NavBar user={user}/>
+        <NavBar user={user} appState={appState}/>
         <h1 className={styles.PageTitle}>Welcome !</h1>
         <div>
             <h2 className={styles.CardTitle}>Featured challenges</h2>

@@ -6,10 +6,11 @@ import AttemptTableHeadings from '../components/AttemptTableHeadings/AttemptTabl
 import { getAllAttemptsForChallenge } from '../api/attempt';
 
 
-const ViewAllChallengeSubmissions = ({challengeID}) => {
+const ViewAllChallengeSubmissions = ({challengeID, appState}) => {
     const [submissions, setSubmissions] = useState(null);
 
     useEffect(() => {
+        console.log(appState)
         const getAttempts = async() => {
             const subs = await getAllAttemptsForChallenge(challengeID)
             console.log(subs)

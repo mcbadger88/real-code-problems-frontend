@@ -13,7 +13,7 @@ const CandidateProfile = (props) => {
         ()=>{
             console.log(props, 'why user in this case is undefined?')
             async function getCandidateProfile () {
-                let response = await axios.get(`http://localhost:5000/candidates/user/${props.user._id}`, {
+                let response = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/user/${props.user._id}`, {
                     withCredentials: true
                 })
                 const {data} = response
@@ -29,7 +29,7 @@ const CandidateProfile = (props) => {
 
     return (
         <>
-        <NavBar user={props.user}/>
+        <NavBar user={props.user} appState={props.appState}/>
         <h1>CandidateProfile Page HERE !</h1>
         {candidateProfile ? <CandidateProfileCard {...props} foundCandidateProfile={candidateProfile}/> : 
         <p><Link to='/candidate/new'>No Profile Yet. Create your profile</Link></p>}
