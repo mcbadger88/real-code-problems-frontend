@@ -68,7 +68,12 @@ const Router = ({user, appState}) => {
 
         <Route
           exact path='/challenges/:id/attempts'
-          component={ViewAllChallengeSubmissions}
+          render={({match}) => (
+            <ViewAllChallengeSubmissions
+              user = {user}
+              appState={appState}
+            />
+          )}
         />
 
         <Route
@@ -82,7 +87,11 @@ const Router = ({user, appState}) => {
 
         <Route
           exact path='/signup'
-          component={SignUp}
+          render={(props) => (
+            <SignUp 
+              user={user} 
+              appState={appState}
+            />)}
         />
 
         <Route
@@ -91,7 +100,13 @@ const Router = ({user, appState}) => {
 
         <Route
           exact path='/results/:id'
-          component={ViewResults}
+          render={({match}) => (
+            <ViewResults
+              user = {user}
+              resultsID ={match.params.id}
+              appState={appState}
+            />
+          )}
         />
 
         <Route 

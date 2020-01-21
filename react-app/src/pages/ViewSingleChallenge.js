@@ -9,7 +9,7 @@ import { getSingleChallenge } from '../api/challenge'
 import {apiGetAttempt} from '../api/attempt'
 
 
-const ViewSingleChallenge = ({challengeID, user}) => {
+const ViewSingleChallenge = ({challengeID, user, appState}) => {
     const [features, setFeatures] = useState(null)
     const [challenge, setChallenge] = useState(null)
     const [selectedFeature, setSelectedFeature] = useState(null)
@@ -66,7 +66,7 @@ const ViewSingleChallenge = ({challengeID, user}) => {
     //render feature number based on click
     return (
         <>
-        <NavBar user={user}/>
+        <NavBar user={user} appState={appState}/>
         <div className={styles.container}>
             {challenge && challengeAttempt &&
             <>
