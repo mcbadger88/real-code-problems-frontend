@@ -7,7 +7,7 @@ const SignUp = (props) => {
     console.log(props)
     return(
         <>
-        <NavBar />
+        <NavBar user={props.user} candidateID={props.candidateID} />
         <h2>This is the Signup Page</h2>
         <br />
         <a href={`${process.env.REACT_APP_BACKEND_BASE_URL}/user/gitauth`}>Log in with github</a>

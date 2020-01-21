@@ -5,7 +5,7 @@ const EditCandidateProfile = (props) => {
 
     return(
         <div>
-        <NavBar />
+        <NavBar user={props.user} appState={props.appState}/>
         <EditCandidateProfileForm {...props} />
         </div>
     )

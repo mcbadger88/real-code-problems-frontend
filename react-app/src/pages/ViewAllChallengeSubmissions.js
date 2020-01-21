@@ -6,7 +6,7 @@ import AttemptTableHeadings from '../components/AttemptTableHeadings/AttemptTabl
 import { getAllAttemptsForChallenge } from '../api/attempt';
 
 
-const ViewAllChallengeSubmissions = ({challengeID, appState}) => {
+const ViewAllChallengeSubmissions = ({challengeID, appState, user}) => {
     const [submissions, setSubmissions] = useState(null);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const ViewAllChallengeSubmissions = ({challengeID, appState}) => {
 
     return (
         <>
-        <NavBar/>
+        <NavBar user={user} appState={appState} />
         <div className={styles.tableContainer}>
             <h1>All Challenge Submissions: </h1>
 

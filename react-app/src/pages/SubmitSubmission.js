@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import NavBar from '../components/NavBar/NavBar'
 import ChallengeButtonArea from '../components/ChallengeButtonArea/ChallengeButtonArea';
 
-const SubmitSumission = ({challengeID, attemptID}) => {
+const SubmitSumission = ({challengeID, attemptID, user, appState}) => {
     console.log(`challengeID ${challengeID} attemptID ${attemptID}`)
 
     //On success, I need to call the attempt update backend to set the status as OK
     return (
         <>
-        <NavBar />
+        <NavBar user={user} appState={appState}/>
         <h1>SubmitSumission HERE !</h1>
         <div data-widget-type="rcp-UploadSubmission" data-token="eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImE4MGE5MGEwLTAwZTctNDQ0Yy1hMDgzLWY3ZWI5YjU4ZjgxZiIsImV4cCI6MTU4NDQ5NjQyNX0.ekjDzZNUjFsTS3dmZCKOWPyY29_uJM7rMC6P_ipAu9M"></div>
         <script type="text/javascript" src="/application.js"></script>
