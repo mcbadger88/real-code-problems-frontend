@@ -13,7 +13,8 @@ const SubmitSumission = ({challengeID, attemptID}) => {
         <div data-widget-type="rcp-UploadSubmission" data-token="eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImE4MGE5MGEwLTAwZTctNDQ0Yy1hMDgzLWY3ZWI5YjU4ZjgxZiIsImV4cCI6MTU4NDQ5NjQyNX0.ekjDzZNUjFsTS3dmZCKOWPyY29_uJM7rMC6P_ipAu9M"></div>
         <script type="text/javascript" src="/application.js"></script>
         <form
-            action= "https://stg-real-code-runner.herokuapp.com/submissions"
+            action= {`http://localhost:5000/challenges/${challengeID}/attempts/${attemptID}`}
+            // action= "https://stg-real-code-runner.herokuapp.com/submissions"
             method="post"
             enctype="multipart/form-data"
             >
