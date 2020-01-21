@@ -16,7 +16,6 @@ const SubmitSumission = ({challengeID, attemptID, user, appState}) => {
             action= {`http://localhost:5000/challenges/${challengeID}/attempts/${attemptID}`}
             // action= "https://stg-real-code-runner.herokuapp.com/submissions"
             method="post"
-            enctype="multipart/form-data"
             >
             <input
                 name="user_token"
