@@ -8,30 +8,50 @@ function App() {
 
   const [user, setUser] = useState({
     auth: false,
-    loading: true
+    loading: false
   })
 
   useEffect(() => {
 
     const getUserData = async () => {
       try {
-        let response = await axios.get('http://localhost:5000/user/current', {
+        let response = await axios.get(`http://localhost:5000/user/current`, {
           withCredentials: true
         })
+
+        console.log('response')
+        console.log(response)
         const user = response.data
         setUser({
           loading: false,
           auth: user
         })
+        console.log(user)
+
       } catch(err) {
-        console.log(err)
+        setUser({
+          loading: false,
+          auth: false
+        })
+        
+        console.log(err.response)
       }
     }
 
     getUserData()
   }, [])
 
-  //the above code generate random userID from 1 to 2;
+  useEffect(() => {
+    const getCandidateID = async() => {
+      try{
+        let response = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/lookup/${user._id}`)
+
+      } catch(err){
+
+      }
+    }
+    getCandidateID()
+  }, [user])
 
   // Hi! The idea for the function below is that it will hit a route in the backend when somebody loads the page for the first time or logs in.
 
@@ -53,11 +73,17 @@ function App() {
 
   //   console.log(this.state)
   // }
-  console.log(user.auth)
+  
+  let appState = {
+    candidateID: "success"
+  }
+  
+
+  // user.auth["candidateID"] = //api cal
   return user.loading ? (
     <div>Loading...</div>
   ) : (
-      <Router user={user.auth}/>
+      <Router user={user.auth} appState={appState} />
   );
 }
 

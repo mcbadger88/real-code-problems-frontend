@@ -1,4 +1,5 @@
 import wait from '../utils/wait.js'
+import Axios from 'axios';
 
 const allAttempts = [
         {
@@ -198,9 +199,10 @@ const allChallengeAttempts = [
 // Will use candidates/:candidateid/attempts backend route
 export const getMyAttempts = async (candidateID) => {
     // Temp, to be replaced with backend API call to candidates/:candidateid/attempts
-
-    await wait(Math.floor(500 + Math.random() * 1500))
-    return allAttempts
+    let apiCall = await Axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/${candidateID}/attempts`)
+    console.log(`api call: ${apiCall}`)
+    let myAttempts = JSON.parse(apiCall.request.response)
+    return myAttempts
 }
 
 export const apiCreateAttempt = async (challengeID) => {

@@ -3,9 +3,10 @@ import {NavLink} from 'react-router-dom';
 import styles from '../NavBar/NavBarStyles.module.css'
 import logo from '../../assets/SiteLogo.svg'
 import auth from '../../api/auth'
+import { useEffect } from 'react';
 
 const NavBar = (props) => {
-
+    console.log(props)
 
     return(
         <nav className={styles.NavBar}>
@@ -16,11 +17,24 @@ const NavBar = (props) => {
             </div>
             <ul className='links'>
 
-                <li><a className={styles.NavLink} href={"/candidates/:id/attempts"}>View my submissions</a></li>
+                {props.user ? 
+                    <li>
+                        <a className={styles.NavLink} href={`/candidates/${props.appState.candidateID}/attempts`}>View my submissions
+                        </a>
+                    </li>
+                : null}
+
                 <li><a className={styles.NavLink} href={"/challenges"}>Browse challenges</a></li>
-                {props.user ? <li><a className={styles.NavLink} href={`/candidates/user/${props.user._id}`}>Profile</a></li> : null}
+                
+                {props.user ? 
+                    <li>
+                    <a className={styles.NavLink} href={`/candidates/user/${props.user._id}`}>Profile</a>
+                    </li> 
+                : null}
+
+
                 {/* the above nav links to shall be dynamically generated after we get the user id from the top level */}
-                {props.user ? <li ><a className={styles.NavLink} href={"http://localhost:5000/user/logout"}> Sign Out</a></li>:
+                {props.user ? <li ><a className={styles.NavLink} href={`${process.env.REACT_APP_BACKEND_BASE_URL}/user/logout`}> Sign Out</a></li>:
                 <li><NavLink className={styles.NavLink} to={"/signup"}>Sign In/Up</NavLink></li>    }       
             </ul>
         </nav>

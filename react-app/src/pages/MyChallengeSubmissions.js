@@ -6,13 +6,15 @@ import styles from './MyChallengeSubmissions.module.css'
 import AttemptTableHeadings from '../components/AttemptTableHeadings/AttemptTableHeadings';
 
 
-const MyChallengeSubmissions = ({candidateID}) => {
+const MyChallengeSubmissions = ({candidateID, appState}) => {
     const [submissions, setSubmissions] = useState(null);
 
     // const [candidateId, setCandidateId] = useState(null);
     
     //API call goes here.
     useEffect(() => {
+        console.log(appState.candidateID)
+        console.log(candidateID)
         const getAttempts = async() => {
             const subs = await getMyAttempts(candidateID)
             console.log(subs[0].status)
