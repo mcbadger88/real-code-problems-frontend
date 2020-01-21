@@ -66,7 +66,7 @@ const EditCandidateProfileForm = (props) => {
 
         <label>
             Bio:
-            <textarea onChange={handleInputChange} type="text" name="bio" vaule={candidateProfile.bio} placeholder={`${candidateProfile.bio}`}/>
+            <textarea onChange={handleInputChange} type="textarea" name="bio" vaule={candidateProfile.bio} placeholder={`${candidateProfile.bio}`}/>
         </label>
 
         <button className={styles.UpdateButton}type="submit">Update</button>

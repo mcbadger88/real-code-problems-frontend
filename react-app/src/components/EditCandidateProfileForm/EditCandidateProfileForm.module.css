@@ -1,4 +1,5 @@
 .EditForm {
+
     font-size: 2rem;
     display:flex;
     flex-direction: column;
@@ -9,52 +10,40 @@
     margin-right:auto;
 }
 
-@media (min-width:780px) {
-    .ContentContainer {
-        flex-direction: row;
-    }
+label {
+    margin-top:0.5em;
 }
 
-
-.ProfileInfoContainer {
-    display: inline-block;
-    width: 50%;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-
-
-
-.ProfileInfoContainer p {
-    margin-bottom:1.25em;
-    border-radius: 2px;
+input[type="text"] {
+    font-size: 2rem;
+    text-align: center;
+    border-radius: 5px;
     box-shadow: 1px 1.5px 1.5px 1px #aaaaaa;
-    background-color: #F0F5FC;
-    padding:0.5em;
+    margin-left:2%;
+    background-color:  #F0F5FC;
+    width:70%;
+    border: none;
+    
+}
+
+input[type="text"]:hover {
+   
+    background-color: white;
+    width:70%;
+    border: none;
     
 }
 
 
 
-.PhotoArea {
-    border-radius: 2px;
-    width:40%;
-    margin-left:auto;
-    margin-right:auto;
-    display: inline-block;
+input[type="textarea"] {
+    margin-left:2%;
+    background-color: #2D9CDB;
+    width:70%;
+    border: none;
+    border-bottom: 2px solid black;
 }
 
-@media (min-width:780px) {
-    .PhotoArea {
-        margin-left:2%;
-    }
-}
-
-
-.GitPhoto {
-    width: 100%;
-}
 
 .UpdateButton {
     color:white;
