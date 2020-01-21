@@ -44,6 +44,8 @@ function App() {
   useEffect(() => {
     //Grab user id from function above. Hit backend route to lookup candidate information. Set appState.candidateID to the candidate id. Return candidateID.
     const getCandidateID = async() => {
+      console.log('get candidate ID')
+      console.log(user)
       try{
         let candidateInfo = await lookupCandidateID(user.auth._id)
         setAppState({

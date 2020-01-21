@@ -29,7 +29,7 @@ const CandidateProfile = (props) => {
 
     return (
         <>
-        <NavBar user={props.user}/>
+        <NavBar user={props.user} appState={props.appState}/>
         <h1>CandidateProfile Page HERE !</h1>
         {candidateProfile ? <CandidateProfileCard {...props} foundCandidateProfile={candidateProfile}/> : 
         <p><Link to='/candidate/new'>No Profile Yet. Create your profile</Link></p>}

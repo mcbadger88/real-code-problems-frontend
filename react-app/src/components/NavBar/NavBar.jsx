@@ -6,9 +6,8 @@ import auth from '../../api/auth'
 import { useEffect } from 'react';
 
 const NavBar = (props) => {
-    console.log('props are here!!!!')
-    console.log(props)
 
+    console.log(props, "in navbar")
     return(
         <nav className={styles.NavBar}>
             <div className={styles.LogoSection}>

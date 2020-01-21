@@ -37,6 +37,7 @@ const Router = ({user, appState}) => {
           exact path='/challenges/:id'
           render={({ location, match }) => (
             <ViewSingleChallenge
+              user={user} 
               challengeID={match.params.id}
               appState={appState}
             />
@@ -47,6 +48,7 @@ const Router = ({user, appState}) => {
           exact path='/challenges/:challID/attempts/:attemptID/edit'
           render={({ location, match }) => (
             <SubmitSubmission
+              user={user} 
               challengeID={match.params.challID}
               attemptID={match.params.attemptID}
               appState={appState}
@@ -84,12 +86,7 @@ const Router = ({user, appState}) => {
         />
 
         <Route
-          exact path='/'
-          render={(props) => (
-            <Home 
-              user={user} 
-              appState={appState}
-            />)}
+          exact path='/' render={(props) => (<BrowseChallenges user={user} appState={appState}/>)}
         />
 
         <Route

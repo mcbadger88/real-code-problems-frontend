@@ -26,8 +26,11 @@ export let candidates = [
 ]
 
 export const lookupCandidateID = async (userID) => {
+    console.log(userID, "in lookupCandidateID")
     let url = `${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/user/${userID}`
     let apiCall = await Axios.get(url)
+    console.log(apiCall, "after api call in lookupCandidateID")
+
     let candidate = JSON.parse(apiCall.request.response)
     return candidate
 }

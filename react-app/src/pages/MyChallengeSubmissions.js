@@ -12,14 +12,14 @@ const MyChallengeSubmissions = ({user, candidateID, appState}) => {
     //API call goes here.
     useEffect(() => {
         const getAttempts = async() => {
-            const subs = await getMyAttempts(appState.candidateID)
+            const subs = await getMyAttempts(candidateID)
             setSubmissions(subs)
         }
         getAttempts()
     }, []);
     return (
     <>
-        <NavBar appState={appState}/>
+        <NavBar appState={appState} user={user}/>
         <div className={styles.tableContainer}>
             <h1>My Challenge Attempts</h1>
 
