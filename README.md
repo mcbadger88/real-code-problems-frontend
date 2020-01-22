@@ -1,4 +1,4 @@
-# REAL CODE PROBLEMS:
+# REAL CODE PROBLEMS FRONTEND:
 
 **Authors:**
 [Brian Zhao](https://github.com/jian10au),
@@ -10,8 +10,10 @@
 [Micheal Milewski](https://github.com/saramic)
  
 **Backend repo:** https://github.com/mcbadger88/real-code-problems-backend
+**Backend deployed**https://aqueous-bastion-20897.herokuapp.com/
 
 **Frontend repo:** https://github.com/mcbadger88/real-code-problems-frontend
+**Frontend deployed** https://mystifying-goldberg-ce7f3c.netlify.com/
 
 
 **Project Brief:**
