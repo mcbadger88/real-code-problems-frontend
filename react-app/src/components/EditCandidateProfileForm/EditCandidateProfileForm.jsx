@@ -43,7 +43,7 @@ const EditCandidateProfileForm = (props) => {
     <div>
     <form className={styles.EditForm} onSubmit={handleSubmit}>
         <label>
-            <span>First Name</span>
+            <span>First Name:</span>
             <input onChange={handleInputChange} type="text" name="firstname" value={candidateProfile.firstname} placeholder="First Name" required/>
         </label>
         
@@ -60,12 +60,12 @@ const EditCandidateProfileForm = (props) => {
         </label>
 
         <label>
-            <span>Username: </span>
+            <span>Username:</span>
             <input type="text" name="username" value={candidateProfile.username} required/>
         </label>
 
-        <label>
-            <span className={styles.BioTitle}>About yourself:</span>
+        <label className={styles.BioArea}>
+            <span >About yourself:</span>
             <textarea onChange={handleInputChange} type="textarea" name="bio" vaule={candidateProfile.bio} placeholder={`${candidateProfile.bio}`}/>
         </label>
 
