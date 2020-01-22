@@ -15,7 +15,7 @@ import Home from './pages/Home'
 import SignUp from './pages/SignUp'
 
 const Router = ({user, appState}) => {
-  console.log(user, 'user from router');
+  // console.log(user, 'user from router');
   return (
     
     <Switch>
