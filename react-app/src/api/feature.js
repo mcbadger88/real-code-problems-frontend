@@ -1,4 +1,5 @@
 import wait from '../utils/wait.js'
+import Axios from 'axios'
 
 const allTestLines = [
     {
@@ -61,12 +62,13 @@ export const allFeatures = [
     }
 ];
 
-
 // Will use /challenges/:id/features backend route
 export const getFeatures = async (challengeID) => {
-    // Temp, to be replaced with backend API call to /challenges/:id/features
-    await wait(Math.floor(500 + Math.random() * 1500))
-    console.log(allFeatures)
-    return allFeatures
+    console.log('inside get features API call')
+    let apiCall = await Axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/challenges/${challengeID}/features`)
+    let features = JSON.parse(apiCall.request.response)
+    console.log("FEATURES HERE")
+    console.log(features.features)
+    return features.features
 }
 

@@ -8,7 +8,7 @@ const EditCandidateProfile = (props) => {
 
     return(
         <div>
-        <NavBar />
+        <NavBar user={props.user} appState={props.appState}/>
         <h1 className={styles.PageTitle}>Edit your information</h1>
         <EditCandidateProfileForm {...props} />
         </div>

@@ -17,7 +17,7 @@ const CandidateProfile = (props) => {
     useEffect( 
         ()=>{
             async function getCandidateProfile () {
-                let response = await axios.get(`http://localhost:5000/candidates/user/${props.user._id}`, {
+                let response = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/user/${props.user._id}`, {
                     withCredentials: true
                 })
                 const {data} = response
@@ -30,7 +30,7 @@ const CandidateProfile = (props) => {
 
     return (
         <>
-        <NavBar user={props.user}/>
+        <NavBar user={props.user} appState={props.appState}/>
         <h1 className={styles.PageHeader}>Your user profile</h1>
         {
         candidateProfile ? 

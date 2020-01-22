@@ -8,7 +8,7 @@ const EditCandidateProfileForm = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let response = await axios.put(`http://localhost:5000/candidates/${props.match.params.id}`, {...candidateProfile},{
+        let response = await axios.put(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/${props.match.params.id}`, {...candidateProfile},{
             withCredentials: true
           })
         
@@ -27,7 +27,7 @@ const EditCandidateProfileForm = (props) => {
     useEffect(() => {
         async function getCandidateProfile () {
 
-            let response = await axios.get(`http://localhost:5000/candidates/${props.match.params.id}`)
+            let response = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/${props.match.params.id}`)
             const {data} = response
             console.log(data)
             setCandidateProfile(data)

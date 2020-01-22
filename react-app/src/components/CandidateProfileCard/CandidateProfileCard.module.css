@@ -66,6 +66,18 @@
     width: 100%;
 }
 
+.NotiOptionContainer {
+    padding:0.5em;
+    margin-left:15%;
+    border: 2px solid black;
+}
+
+.NotiOptionTickBox {
+    display: inline-block;
+    padding:1rem;
+    border: 2px solid black;
+}
+
 .UpdateButton {
     color:white;
     width:25%;
