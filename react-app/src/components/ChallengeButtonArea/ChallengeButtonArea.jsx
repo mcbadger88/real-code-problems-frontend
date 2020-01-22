@@ -96,7 +96,7 @@ const ChallengeButtonArea = ({challenge, attempt, candidateID, onChallengeStatus
 
 
             <div className={styles.buttonAreaBottom} >
-                <a className={styles.link} href={`${challenge._id}/attempts`}>
+                <a className={styles.link} href={`/candidates/${candidateID}/attempts`}>
                     <button 
                         className={styles.buttonStyle}
                         onClick={() => { }}
