@@ -30,10 +30,10 @@ const CandidateProfileCard = ({foundCandidateProfile, history, ...rest}) => {
             {/* <p>UserID(To be hidden maybe): {foundCandidateProfile.user_id}</p>    */}
             {/* <p>CandidateID(To be hidden maybe): {foundCandidateProfile._id}</p>    */}
     </div>
-    <label className={styles.NotiOptionContainer}>
-        <p>Receive notification from codatical</p>g
-        <input className={styles.NotiOptionTickBox} type="checkbox" name="notiOption" />
-    </label>
+    <label className={styles.NotificationOption}>
+        Receive regular emails from codatical
+        <input className={styles.NotificationOptionCheckBox} type="checkbox" />
+    </label>    
     <button className={styles.UpdateButton} onClick={handleClick}>Edit</button> 
     </>
     )
