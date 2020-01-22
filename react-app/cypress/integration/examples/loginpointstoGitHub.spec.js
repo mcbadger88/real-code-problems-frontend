@@ -7,7 +7,7 @@ describe(
                 cy.visit('/')
             }
                 )
-        it('can download code challenge docker file', () => {
+        it('click in and redirect happens', () => {
                     cy.contains('Sign In').click();
                     cy.wait(2500)
                     cy.queryByText('Log in with github').click()
