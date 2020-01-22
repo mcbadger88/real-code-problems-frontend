@@ -5,9 +5,6 @@ import { checkCurrentUser } from "./api/auth";
 import { lookupCandidateID } from './api/candidate';
 
 function App() {
-
-  // Local State
-
   const [user, setUser] = useState({
     auth: false,
     loading: false
@@ -35,7 +32,7 @@ function App() {
         setUser({
           loading: false,
           auth: false
-        })
+        })  
       }
     }
     getUserData()
@@ -59,7 +56,6 @@ function App() {
     }
     getCandidateID()
   }, [user])
-
   return user.loading ? (
     <div>Loading...</div>
   ) : (

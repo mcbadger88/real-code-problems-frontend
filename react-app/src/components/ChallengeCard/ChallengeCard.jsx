@@ -17,8 +17,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
         return allStars
 
     }
-    // <FontAwesomeIcon icon={faStar}/>
-    // <FontAwesomeIcon icon={faStar}/>
     return (
         <div className={styles.ChallengeCard}>
                 <h2>{props.data.title}</h2>
