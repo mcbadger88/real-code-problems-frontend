@@ -1,16 +1,14 @@
 describe(
-    'First end to end test' , () => {
+    'Any user can see the challenge details' , () => {
         beforeEach(
             () => {
                 cy.visit('/')
             }
                 )
         it('can download code challenge docker file', () => {
-                    cy.contains('Sign In').click();
+                    cy.contains('More detail').click();
                     cy.wait(2500)
-                    cy.contains('Log in').click();
-                    cy.wait(2500)
-                    cy.visit('/')
+                    cy.contains('start challenge')
         })
     }
 )
