@@ -18,23 +18,27 @@ const ViewSingleChallenge = ({challengeID, user, appState}) => {
 
     useEffect(() => {
         console.log(features)
+        if (features){
+            setSelectedFeature(features[0])
+        }
 
     }, [ features ])
 
-    useEffect( async () => {
-        // Replace with API call
-        // getAllChallenges().then(response => {
-        //   setChallenges(response)
-        // })
-        const chall = await getSingleChallenge(challengeID)
-        setChallenge(chall)
-        console.log(chall, "getsinglechallenge")
+    useEffect(() => {
+        const getAndSetChallenge = async () => {
+            const chall = await getSingleChallenge(challengeID)
+            setChallenge(chall)
+        }
+        getAndSetChallenge()
       }, [ ])
 
-    useEffect( async () => {
-        const feats = await getFeatures(challengeID)
-        console.log(`features ${feats}`)
-        setFeatures(feats)
+    useEffect(() => {
+        const getAndSetFeatures = async () => {
+            const feats = await getFeatures(challengeID)
+            console.log(feats, "features")
+            setFeatures(feats)
+        }
+        getAndSetFeatures()
     }, [])
 
     //see if the current user has an attempt that is in progress, set variable challengeStarted if active attempt exists for this chalenge and user
@@ -51,7 +55,7 @@ const ViewSingleChallenge = ({challengeID, user, appState}) => {
         setChallengeStatusChanged(!challengeStatusChanged)
     }
 
-    console.log("In ViewSingleChallenge")
+    // console.log("In ViewSingleChallenge")
     // Challenge Container (60% width)
     // Left hand column container
     //  Subtask Container (make it 60%)
@@ -84,8 +88,8 @@ const ViewSingleChallenge = ({challengeID, user, appState}) => {
                         <Feature feature={selectedFeature} totalFeatures={features.length}/>
                         } 
                     </div>
-                    {features && features.map((feature) => 
-                        <button 
+                    {features && features.map((feature, index) => 
+                        <button key={index}
                         onClick={() => { setSelectedFeature(feature) }}
                         type="submit"
                         >Feature {feature.number}</button>

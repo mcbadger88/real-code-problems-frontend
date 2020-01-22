@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 const NavBar = (props) => {
 
-    console.log(props, "in navbar")
+    // console.log(props, "in navbar")
     return(
         <nav className={styles.NavBar}>
             <div className={styles.LogoSection}>

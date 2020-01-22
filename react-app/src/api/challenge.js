@@ -40,10 +40,15 @@ export const getAllChallenges = async () => {
 // Will use /challenges/:id backend route
 export const getSingleChallenge = async (challengeID) => {
     // Temp, to be replaced with backend API call to /challenges/:id
-    await wait(Math.floor(500 + Math.random() * 1500))
-    console.log(`Challenges: ${challenges}`)
-    console.log(`challengeID ${challengeID}`)
-    return challenges[0]
+    console.log('inside get single challenge call')
+    console.log(challengeID)
+    let apiCall = await Axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/challenges/${challengeID}`)
+    let challenge = JSON.parse(apiCall.request.response)
+    return challenge
+    // await wait(Math.floor(500 + Math.random() * 1500))
+    // console.log(`Challenges: ${challenges}`)
+    // console.log(`challengeID ${challengeID}`)
+    // return challenges[0]
 }
 
 // Will use update /challenges/:id backend route
@@ -52,7 +57,6 @@ export const apiSetChallengeEnabled = async (challengeID, enabled) => {
     challenges[0].active = enabled
     return challenges[0]
 }
-
 
 // Example Code to use getAllChallenges API in component
 
