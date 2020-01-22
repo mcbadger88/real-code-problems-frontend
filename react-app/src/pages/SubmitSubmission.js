@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../components/NavBar/NavBar'
 import ChallengeButtonArea from '../components/ChallengeButtonArea/ChallengeButtonArea';
+import styles from './BrowseChallenges.module.css'
 
 const SubmitSumission = ({challengeID, attemptID, user, appState}) => {
     console.log(`challengeID ${challengeID} attemptID ${attemptID}`)
@@ -9,7 +10,8 @@ const SubmitSumission = ({challengeID, attemptID, user, appState}) => {
     return (
         <>
         <NavBar user={user} appState={appState}/>
-        <h1>SubmitSumission HERE !</h1>
+        <div className={styles.pageContainer}>
+        <h1 >Send Submission:</h1>
         <div data-widget-type="rcp-UploadSubmission" data-token="eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImE4MGE5MGEwLTAwZTctNDQ0Yy1hMDgzLWY3ZWI5YjU4ZjgxZiIsImV4cCI6MTU4NDQ5NjQyNX0.ekjDzZNUjFsTS3dmZCKOWPyY29_uJM7rMC6P_ipAu9M"></div>
         <script type="text/javascript" src="/application.js"></script>
         <form
@@ -46,6 +48,7 @@ const SubmitSumission = ({challengeID, attemptID, user, appState}) => {
             </div>
             <button>submit</button>
         </form>
+        </div>
         </>
     )
 }

@@ -64,7 +64,7 @@ class AttemptCard extends React.Component{
                     <div className={styles.buttonDiv}>
                         {this.deleteButtonAvailable() ? <a href=""><button>delete</button></a> : null}
 
-                        {this.resultsAvailable() ? <a href={`/results/${this.props.attemptID}`}><button className={styles.button} >view results</button></a> : null}
+                        {/* {this.resultsAvailable() ? <a href={`/results/${this.props.attemptID}`}><button className={styles.button} >view results</button></a> : null} */}
                     </div>
                 </td>
             </tr>
