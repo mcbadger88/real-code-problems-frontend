@@ -44,11 +44,11 @@ const ViewSingleChallenge = ({challengeID, user, appState}) => {
     //see if the current user has an attempt that is in progress, set variable challengeStarted if active attempt exists for this chalenge and user
     useEffect(() => {
         const getStatus = async () => {
-            const attempt = await apiGetAttempt(challengeID)
+            const attempt = await apiGetAttempt(challengeID, appState.candidateID)
             setChallengeAttempt(attempt)
         }
         getStatus()
-    }, [ challengeStatusChanged ])
+    }, [ challengeStatusChanged, challengeID ])
 
 
     const toggleChallengeStatusChanged = () => {
@@ -73,13 +73,13 @@ const ViewSingleChallenge = ({challengeID, user, appState}) => {
         <>
         <NavBar user={user} appState={appState}/>
         <div className={styles.container}>
-            {challenge && challengeAttempt &&
+            {challenge &&
             <>
-            <h1>{challenge.title}: {challengeAttempt.status}</h1>
+            <h1>{challenge.title}: {challengeAttempt && challengeAttempt.status}</h1>
             <div className={styles.contentArea}>
                 <div className={styles.leftHandContainer}>
                     <ChallengeDescription challenge={challenge}/>
-                    <ButtonArea challenge={challenge} attempt={challengeAttempt} onChallengeStatusChange={toggleChallengeStatusChanged}/>
+                    <ButtonArea challenge={challenge} attempt={challengeAttempt} candidateID={appState.candidateID} onChallengeStatusChange={toggleChallengeStatusChanged}/>
 
                 </div>
                 <div className={styles.rightHandContainer}>
