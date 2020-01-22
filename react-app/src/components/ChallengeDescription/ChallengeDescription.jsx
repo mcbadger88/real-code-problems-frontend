@@ -9,7 +9,7 @@ const ChallengeDescription = ({challenge}) => {
         let allStars = []
         let times = challenge.features.length;
         for(let i=0; i < times; i++){
-            allStars.push(<FontAwesomeIcon icon={faStar} />);
+            allStars.push(<FontAwesomeIcon icon={faStar} key={i}/>);
         }
         return allStars
     }
