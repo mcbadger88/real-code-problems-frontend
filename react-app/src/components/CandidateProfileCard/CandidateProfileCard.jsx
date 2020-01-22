@@ -2,7 +2,7 @@ import React,{useEffect} from 'react'
 import {Redirect} from 'react-router-dom'
 import styles from '../CandidateProfileCard/CandidateProfileCard.module.css'
 
-const CandidateProfileCard = ({foundCandidateProfile, history, ...rest}) => {
+const CandidateProfileCard = ({foundCandidateProfile, history, appState, ...rest}) => {
 
     const handleClick = () => {
         history.push(`/candidates/${foundCandidateProfile._id}/edit`)

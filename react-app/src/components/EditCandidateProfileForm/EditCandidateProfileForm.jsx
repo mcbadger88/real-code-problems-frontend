@@ -2,17 +2,18 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import styles from '../EditCandidateProfileForm/EditCandidateProfileForm.module.css'
 
-const EditCandidateProfileForm = (props) => {
+const EditCandidateProfileForm = ({appState, user, history}) => {
+    console.log("EDIT CAND PROFILE", appState)
 
     const [candidateProfile, setCandidateProfile] = useState({})
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let response = await axios.put(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/${props.match.params.id}`, {...candidateProfile},{
+        let response = await axios.put(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/${appState.candidateID}`, {...candidateProfile},{
             withCredentials: true
           })
-        
-        props.history.push(`/candidates/user/${props.user._id}`)
+        // console.log('response', response)
+        history.push(`/candidates/user/${user._id}`)
     }
 
     const handleInputChange = (e) => {
@@ -27,7 +28,7 @@ const EditCandidateProfileForm = (props) => {
     useEffect(() => {
         async function getCandidateProfile () {
 
-            let response = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/${props.match.params.id}`)
+            let response = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/${appState.candidateID}`)
             const {data} = response
             console.log(data)
             setCandidateProfile(data)
@@ -37,7 +38,7 @@ const EditCandidateProfileForm = (props) => {
         
     }, [])
 
-    console.log('rendered', props)
+    console.log('rendered')
 
     return(
     <div>

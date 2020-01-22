@@ -4,13 +4,14 @@ import NavBar from '../components/NavBar/NavBar'
 import styles from './EditCandidateProfile.module.css'
 
 
-const EditCandidateProfile = (props) => {
+const EditCandidateProfile = ({user, appState, history}) => {
+    console.log('appstate', appState)
 
     return(
         <div>
-        <NavBar user={props.user} appState={props.appState}/>
+        <NavBar user={user} appState={appState}/>
         <h1 className={styles.PageTitle}>Edit your information</h1>
-        <EditCandidateProfileForm {...props} />
+        <EditCandidateProfileForm history={history} user={user} appState={appState} />
         </div>
     )
 

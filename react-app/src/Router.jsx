@@ -90,7 +90,14 @@ const Router = ({user, appState}) => {
 
         <Route
           exact path='/candidates/user/:id'
-          render={(props) => {return <CandidateProfile user={user} appState={appState} {...props} />}}
+          // render={(props) => {return <CandidateProfile user={user} appState={appState} {...props} />}}
+
+          render={({history, match}) => (
+            <CandidateProfile
+              user = {user}
+              appState ={appState}
+              history = {history}
+            />)}
         />
 
         <Route
@@ -122,9 +129,15 @@ const Router = ({user, appState}) => {
           render={() => <h1>You don't have the right to access this page! Please Login!</h1>}
         />
 
-      <ProtectedRoute
+      <Route
           exact path='/candidates/:id/edit'
-          user={user} component={EditCandidateProfile}
+          render={({match, history}) => (
+            <EditCandidateProfile
+              user = {user}
+              appState={appState}
+              history={history}
+            />
+          )}
        />
 
         
