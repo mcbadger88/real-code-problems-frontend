@@ -5,6 +5,7 @@ import EditCandidateProfile from './pages/EditCandidateProfile'
 import BrowseChallenges from './pages/BrowseChallenges'
 import ViewSingleChallenge from './pages/ViewSingleChallenge'
 import SubmitSubmission from './pages/SubmitSubmission'
+import SubmitSuccess from './pages/SubmitSucces'
 import MyChallengeSubmissions from './pages/MyChallengeSubmissions'
 import ViewAllChallengeSubmissions from './pages/ViewAllChallengeSubmissions'
 import ViewResults from './pages/ViewResults'
@@ -50,6 +51,17 @@ const Router = ({user, appState}) => {
             <SubmitSubmission
               user={user} 
               challengeID={match.params.challID}
+              attemptID={match.params.attemptID}
+              appState={appState}
+            />
+          )}
+        />
+        <Route
+          exact path='/challenges/:challID/attempts/:attemptID/success'
+          render={({ location, match }) => (
+            <SubmitSuccess
+              user={user} 
+              candidateID={match.params.candidateID}
               attemptID={match.params.attemptID}
               appState={appState}
             />
