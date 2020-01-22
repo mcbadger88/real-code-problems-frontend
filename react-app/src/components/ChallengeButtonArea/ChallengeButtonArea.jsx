@@ -72,7 +72,7 @@ const ChallengeButtonArea = ({challenge, attempt, candidateID, onChallengeStatus
                         >download zip file
                         </button>
                         
-                        <a className={styles.link} href={`/challenges/${challenge.id}/attempts/${attempt._id}/edit`}>
+                        <a className={styles.link} href={`/challenges/${challenge._id}/attempts/${attempt._id}/edit`}>
                             <button 
                                 className={styles.buttonStyle}
                                 onClick={() => { }}
@@ -93,7 +93,7 @@ const ChallengeButtonArea = ({challenge, attempt, candidateID, onChallengeStatus
 
             </div>
             <div className={styles.buttonAreaBottom} >
-                <a className={styles.link} href={`${challenge.id}/attempts`}>
+                <a className={styles.link} href={`${challenge._id}/attempts`}>
                     <button 
                         className={styles.buttonStyle}
                         onClick={() => { }}
