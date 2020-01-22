@@ -2,17 +2,18 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import styles from '../EditCandidateProfileForm/EditCandidateProfileForm.module.css'
 
-const EditCandidateProfileForm = (props) => {
+const EditCandidateProfileForm = ({appState, user, history}) => {
+    console.log("EDIT CAND PROFILE", appState)
 
     const [candidateProfile, setCandidateProfile] = useState({})
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let response = await axios.put(`http://localhost:5000/candidates/${props.match.params.id}`, {...candidateProfile},{
+        let response = await axios.put(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/${appState.candidateID}`, {...candidateProfile},{
             withCredentials: true
           })
-        
-        props.history.push(`/candidates/user/${props.user._id}`)
+        // console.log('response', response)
+        history.push(`/candidates/user/${user._id}`)
     }
 
     const handleInputChange = (e) => {
@@ -27,7 +28,7 @@ const EditCandidateProfileForm = (props) => {
     useEffect(() => {
         async function getCandidateProfile () {
 
-            let response = await axios.get(`http://localhost:5000/candidates/${props.match.params.id}`)
+            let response = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/${appState.candidateID}`)
             const {data} = response
             console.log(data)
             setCandidateProfile(data)
@@ -37,36 +38,36 @@ const EditCandidateProfileForm = (props) => {
         
     }, [])
 
-    console.log('rendered', props)
+    console.log('rendered')
 
     return(
     <div>
     <form className={styles.EditForm} onSubmit={handleSubmit}>
         <label>
-            First Name
+            <span>First Name:</span>
             <input onChange={handleInputChange} type="text" name="firstname" value={candidateProfile.firstname} placeholder="First Name" required/>
         </label>
         
 
         <label>
-            Last Name
+            <span>Last Name:</span>
             <input onChange={handleInputChange} type="text" name="lastname" value={candidateProfile.lastname} placeholder="Last Name" required/>
         </label>
         
 
         <label>
-            Git Hub
+            <span>Git Hub:</span>
             <input type="text" name="github" value={candidateProfile.github} required/>
         </label>
 
         <label>
-            Username:
+            <span>Username:</span>
             <input type="text" name="username" value={candidateProfile.username} required/>
         </label>
 
-        <label>
-            Bio:
-            <textarea onChange={handleInputChange} type="text" name="bio" vaule={candidateProfile.bio} placeholder={`${candidateProfile.bio}`}/>
+        <label className={styles.BioArea}>
+            <span >About yourself:</span>
+            <textarea onChange={handleInputChange} type="textarea" name="bio" vaule={candidateProfile.bio} placeholder={`${candidateProfile.bio}`}/>
         </label>
 
         <button className={styles.UpdateButton}type="submit">Update</button>

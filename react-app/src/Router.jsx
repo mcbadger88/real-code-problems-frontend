@@ -5,6 +5,7 @@ import EditCandidateProfile from './pages/EditCandidateProfile'
 import BrowseChallenges from './pages/BrowseChallenges'
 import ViewSingleChallenge from './pages/ViewSingleChallenge'
 import SubmitSubmission from './pages/SubmitSubmission'
+import SubmitSuccess from './pages/SubmitSucces'
 import MyChallengeSubmissions from './pages/MyChallengeSubmissions'
 import ViewAllChallengeSubmissions from './pages/ViewAllChallengeSubmissions'
 import ViewResults from './pages/ViewResults'
@@ -13,29 +14,37 @@ import AddChallenge from './pages/AddChallenge'
 import Home from './pages/Home'
 import SignUp from './pages/SignUp'
 
-const Router = ({user}) => {
-  console.log(user, 'user from router');
+const Router = ({user, appState}) => {
+  // console.log(user, 'user from router');
   return (
     
     <Switch>
         <Route
           exact path='/challenges'
-          user={user} component={BrowseChallenges}
+          render={({ location, match }) => (
+            <BrowseChallenges
+              user={user}
+              appState={appState}
+          />)}
         />
 
         <Route
           exact path='/challenges/new'
           component={AddChallenge}
+          appState={appState}
         />
+
         <Route
           exact path='/challenges/:id'
           render={({ location, match }) => (
             <ViewSingleChallenge
               user={user} 
               challengeID={match.params.id}
+              appState={appState}
             />
           )}
         />
+
         <Route
           exact path='/challenges/:challID/attempts/:attemptID/edit'
           render={({ location, match }) => (
@@ -43,34 +52,76 @@ const Router = ({user}) => {
               user={user} 
               challengeID={match.params.challID}
               attemptID={match.params.attemptID}
+              appState={appState}
             />
           )}
         />
         <Route
-          exact path='/candidates/:id/attempts'
-          user={user} component={MyChallengeSubmissions}
+          exact path='/challenges/:challID/attempts/:attemptID/success'
+          render={({ location, match }) => (
+            <SubmitSuccess
+              user={user} 
+              candidateID={match.params.candidateID}
+              attemptID={match.params.attemptID}
+              appState={appState}
+            />
+          )}
         />
+        <Route
+          exact path='/candidates/:candidateID/attempts'
+          render={({match}) => (
+            <MyChallengeSubmissions
+              user = {user}
+              candidateID={match.params.candidateID}
+              appState={appState}
+            />
+          )}
+        />
+
         <Route
           exact path='/challenges/:id/attempts'
-          component={ViewAllChallengeSubmissions}
+          render={({match}) => (
+            <ViewAllChallengeSubmissions
+              user = {user}
+              appState={appState}
+            />
+          )}
         />
+
         <Route
           exact path='/candidates/user/:id'
-          render={(props) => {return <CandidateProfile user={user} />}}
+          // render={(props) => {return <CandidateProfile user={user} appState={appState} {...props} />}}
+
+          render={({history, match}) => (
+            <CandidateProfile
+              user = {user}
+              appState ={appState}
+              history = {history}
+            />)}
         />
 
         <Route
           exact path='/signup'
-          component={SignUp}
+          render={(props) => (
+            <SignUp 
+              user={user} 
+              appState={appState}
+            />)}
         />
 
         <Route
-          exact path='/' render={(props) => (<BrowseChallenges user={user}/>)}
+          exact path='/' render={(props) => (<BrowseChallenges user={user} appState={appState}/>)}
         />
 
         <Route
           exact path='/results/:id'
-          component={ViewResults}
+          render={({match}) => (
+            <ViewResults
+              user = {user}
+              resultsID ={match.params.id}
+              appState={appState}
+            />
+          )}
         />
 
         <Route 
@@ -78,9 +129,15 @@ const Router = ({user}) => {
           render={() => <h1>You don't have the right to access this page! Please Login!</h1>}
         />
 
-      <ProtectedRoute
+      <Route
           exact path='/candidates/:id/edit'
-          user={user} component={EditCandidateProfile}
+          render={({match, history}) => (
+            <EditCandidateProfile
+              user = {user}
+              appState={appState}
+              history={history}
+            />
+          )}
        />
 
         

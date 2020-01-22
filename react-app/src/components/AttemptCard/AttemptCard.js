@@ -8,6 +8,8 @@ class AttemptCard extends React.Component{
         super(props)
     }
 
+
+
     // Returns true if results are available for an attempt, returns false if no results are available for an attempt. Used to conditionally render the 'view my results' button on the attempt card.
     resultsAvailable(){
         if(this.props.status === "PASSED" || this.props.status ==="FAILED"){
@@ -31,6 +33,8 @@ class AttemptCard extends React.Component{
         //formatting submission date
         let submissionDate = new Date(this.props.dateSubmitted)
         let formattedDate = new Intl.DateTimeFormat('en-GB', {year: 'numeric', month: '2-digit', day: '2-digit'}).format(submissionDate)
+        // console.log('attempt card')
+        // console.log(this.props)
 
         return(
             <tr className={styles.cardContainer}>
@@ -43,7 +47,7 @@ class AttemptCard extends React.Component{
 
                 <td className={styles.tableData} > 
 
-                    <a className={styles.links} href={`${process.env.REACT_APP_FRONTEND_BASE_URL}/candidates/${this.props.candidate}`} > {`@${this.props.username}`}</a>
+                    <a className={styles.links} href={`${process.env.REACT_APP_FRONTEND_BASE_URL}/candidates/user/${this.props.candidate.user_id}`} > {`@${this.props.username}`}</a>
                 
                 </td>
 
@@ -57,11 +61,11 @@ class AttemptCard extends React.Component{
 
                 <td className={styles.tableData} id={styles.rightRoundedEdges}> 
                 {/* need clarification on route to delete attempt. */}
-                    <div className={styles.buttonDiv}>
-                        {this.deleteButtonAvailable() ? <a href=""><button>delete</button></a> : null}
+                    {/* <div className={styles.buttonDiv}>
+                        {this.deleteButtonAvailable() ? <a href=""><button>delete</button></a> : null} */}
 
-                        {this.resultsAvailable() ? <a href={`/results/${this.props.attemptID}`}><button className={styles.button} >view results</button></a> : null}
-                    </div>
+                        {/* {this.resultsAvailable() ? <a href={`/results/${this.props.attemptID}`}><button className={styles.button} >view results</button></a> : null} */}
+                    {/* </div> */}
                 </td>
             </tr>
         );
