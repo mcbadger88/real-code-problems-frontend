@@ -15,9 +15,6 @@ const ChallengeScenario = ({scenario}) => {
         }
     }
 
-    console.log('scenario line numbers')
-    console.log(scenario)
-
     return (               
         <div className={styles.scenarioContainer}>
             <h3>Scenario : {scenario.scenarioTitle}</h3>
