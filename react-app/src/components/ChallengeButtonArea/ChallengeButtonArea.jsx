@@ -9,6 +9,8 @@ import Axios from 'axios';
 const ChallengeButtonArea = ({challenge, attempt, candidateID, onChallengeStatusChange}) => {
     const [dockerFileLocation, setDockerFileLocation] = useState(null)
     
+    console.log("challenge buton area")
+    console.log(challenge)
     // call set dockerfile variable
     useEffect( async () => {
         setDockerFileLocation(challenge.zipFileLocation)
@@ -23,7 +25,7 @@ const ChallengeButtonArea = ({challenge, attempt, candidateID, onChallengeStatus
     //create attempt in response to start challenge button
     const startChallenge = async (challenge, candidateID) => {
         //create apttempt
-        const success = await apiCreateAttempt(challenge.id, candidateID)
+        const success = await apiCreateAttempt(challenge._id, candidateID)
         //set challenge started
         onChallengeStatusChange()
         // const started = await apiIsActiveAttempt(challenge._id)
@@ -32,7 +34,7 @@ const ChallengeButtonArea = ({challenge, attempt, candidateID, onChallengeStatus
 
     // in response to disable challenge, create disableChallene() and call the challenge update route
     const setChallengeEnabled = async (enabled) => {
-        const sucess = await apiSetChallengeEnabled(challenge.id, enabled)
+        const sucess = await apiSetChallengeEnabled(challenge._id, enabled)
         onChallengeStatusChange()
     }
 
@@ -70,7 +72,7 @@ const ChallengeButtonArea = ({challenge, attempt, candidateID, onChallengeStatus
                         >download zip file
                         </button>
                         
-                        <a className={styles.link} href={`/challenges/${challenge.externalIdentifier}/attempts/${attempt._id}/edit`}>
+                        <a className={styles.link} href={`/challenges/${challenge.id}/attempts/${attempt._id}/edit`}>
                             <button 
                                 className={styles.buttonStyle}
                                 onClick={() => { }}
