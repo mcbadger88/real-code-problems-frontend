@@ -15,10 +15,13 @@ const ChallengeScenario = ({scenario}) => {
         }
     }
 
+    console.log('scenario line numbers')
+    console.log(scenario)
+
     return (               
         <div className={styles.scenarioContainer}>
             <h3>Scenario : {scenario.scenarioTitle}</h3>
-            { scenario.lineNumbers.map((testLine) =>   
+            { scenario.testLines.map((testLine) =>   
                  <>
                  <div className={styles.testLineContainer}>
                      <button 
@@ -36,6 +39,29 @@ const ChallengeScenario = ({scenario}) => {
             }
         </div>
     )
+
+
+    // return (               
+    //     <div className={styles.scenarioContainer}>
+    //         <h3>Scenario : {scenario.scenarioTitle}</h3>
+    //         { scenario.lineNumbers.map((testLine) =>   
+    //              <>
+    //              <div className={styles.testLineContainer}>
+    //                  <button 
+    //                      onClick={() => { toggleDisplayHelperImage(testLine) }}
+    //                      type="submit"
+    //                      >{!selectedTestLine || selectedTestLine.lineNumber !== testLine.lineNumber ? <FontAwesomeIcon icon={faChevronRight}/> : <FontAwesomeIcon icon={faChevronDown}/>} 
+    //                  </button>
+    //                  <p>Test Line {testLine && testLine.lineNumber} - {testLine && testLine.testString}</p>  
+    //              </div>
+    //              {
+    //              selectedTestLine && (selectedTestLine.lineNumber === testLine.lineNumber) && <img className={styles.helperImage} src={testLine.helperImage}></img>
+    //              }
+    //              </>
+    //         )
+    //         }
+    //     </div>
+    // )
 }
 
 export default ChallengeScenario

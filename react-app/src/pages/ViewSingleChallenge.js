@@ -9,7 +9,7 @@ import { getSingleChallenge } from '../api/challenge'
 import {apiGetAttempt} from '../api/attempt'
 
 
-const ViewSingleChallenge = ({challengeID}) => {
+const ViewSingleChallenge = ({challengeID, user, appState}) => {
     const [features, setFeatures] = useState(null)
     const [challenge, setChallenge] = useState(null)
     const [selectedFeature, setSelectedFeature] = useState(null)
@@ -18,39 +18,44 @@ const ViewSingleChallenge = ({challengeID}) => {
 
     useEffect(() => {
         console.log(features)
+        if (features){
+            setSelectedFeature(features[0])
+        }
 
     }, [ features ])
 
-    useEffect( async () => {
-        // Replace with API call
-        // getAllChallenges().then(response => {
-        //   setChallenges(response)
-        // })
-        const chall = await getSingleChallenge(challengeID)
-        setChallenge(chall)
+    useEffect(() => {
+        const getAndSetChallenge = async () => {
+            const chall = await getSingleChallenge(challengeID)
+            setChallenge(chall)
+        }
+        getAndSetChallenge()
       }, [ ])
 
-    useEffect( async () => {
-        const feats = await getFeatures(challengeID)
-        console.log(`features ${feats}`)
-        setFeatures(feats)
+    useEffect(() => {
+        const getAndSetFeatures = async () => {
+            const feats = await getFeatures(challengeID)
+            console.log(feats, "features")
+            setFeatures(feats)
+        }
+        getAndSetFeatures()
     }, [])
 
     //see if the current user has an attempt that is in progress, set variable challengeStarted if active attempt exists for this chalenge and user
     useEffect(() => {
         const getStatus = async () => {
-            const attempt = await apiGetAttempt(challengeID)
+            const attempt = await apiGetAttempt(challengeID, appState.candidateID)
             setChallengeAttempt(attempt)
         }
         getStatus()
-    }, [ challengeStatusChanged ])
+    }, [ challengeStatusChanged, challengeID ])
 
 
     const toggleChallengeStatusChanged = () => {
         setChallengeStatusChanged(!challengeStatusChanged)
     }
 
-    console.log("In ViewSingleChallenge")
+    // console.log("In ViewSingleChallenge")
     // Challenge Container (60% width)
     // Left hand column container
     //  Subtask Container (make it 60%)
@@ -66,15 +71,15 @@ const ViewSingleChallenge = ({challengeID}) => {
     //render feature number based on click
     return (
         <>
-        <NavBar />
+        <NavBar user={user} appState={appState}/>
         <div className={styles.container}>
-            {challenge && challengeAttempt &&
+            {challenge &&
             <>
-            <h1>{challenge.title}: {challengeAttempt.status}</h1>
+            <h1>{challenge.title}: {challengeAttempt && challengeAttempt.status}</h1>
             <div className={styles.contentArea}>
                 <div className={styles.leftHandContainer}>
                     <ChallengeDescription challenge={challenge}/>
-                    <ButtonArea challenge={challenge} attempt={challengeAttempt} onChallengeStatusChange={toggleChallengeStatusChanged}/>
+                    <ButtonArea challenge={challenge} attempt={challengeAttempt} candidateID={appState.candidateID} onChallengeStatusChange={toggleChallengeStatusChanged}/>
 
                 </div>
                 <div className={styles.rightHandContainer}>
@@ -83,8 +88,8 @@ const ViewSingleChallenge = ({challengeID}) => {
                         <Feature feature={selectedFeature} totalFeatures={features.length}/>
                         } 
                     </div>
-                    {features && features.map((feature) => 
-                        <button 
+                    {features && features.map((feature, index) => 
+                        <button key={index}
                         onClick={() => { setSelectedFeature(feature) }}
                         type="submit"
                         >Feature {feature.number}</button>

@@ -6,18 +6,26 @@ import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
 
-const ChallengeButtonArea = ({challenge, attempt, onChallengeStatusChange}) => {
+const ChallengeButtonArea = ({challenge, attempt, candidateID, onChallengeStatusChange}) => {
     const [dockerFileLocation, setDockerFileLocation] = useState(null)
     
-    //call set dockerfile variable
+    console.log("challenge buton area")
+    console.log(challenge)
+    // call set dockerfile variable
     useEffect( async () => {
         setDockerFileLocation(challenge.zipFileLocation)
     }, [])
+    // useEffect(() => {
+    //     const dockerFile = async () => {
+    //         setDockerFileLocation(challenge.zipFileLocation)
+    //     }
+    //     dockerFile()
+    // })
 
     //create attempt in response to start challenge button
-    const startChallenge = async (challenge) => {
+    const startChallenge = async (challenge, candidateID) => {
         //create apttempt
-        const success = await apiCreateAttempt(challenge._id)
+        const success = await apiCreateAttempt(challenge._id, candidateID)
         //set challenge started
         onChallengeStatusChange()
         // const started = await apiIsActiveAttempt(challenge._id)
@@ -26,11 +34,11 @@ const ChallengeButtonArea = ({challenge, attempt, onChallengeStatusChange}) => {
 
     // in response to disable challenge, create disableChallene() and call the challenge update route
     const setChallengeEnabled = async (enabled) => {
-        const sucess = await apiSetChallengeEnabled(challenge.id, enabled)
+        const sucess = await apiSetChallengeEnabled(challenge._id, enabled)
         onChallengeStatusChange()
     }
 
-    console.log(`attempt status ${attempt.status}`)
+    console.log(`attempt status ${attempt && attempt.status}`)
 
     // const saveFile = async (e) => {
     //     e.preventDefault()
@@ -50,13 +58,13 @@ const ChallengeButtonArea = ({challenge, attempt, onChallengeStatusChange}) => {
     //     <input type="file" name="image" id="image"/>
     //     <button type="submit"> Submit </button>
     // </form>
-    console.log(`ChallengeButtonArea attemptID ${attempt._id}`)
+    console.log(`ChallengeButtonArea attemptID ${attempt && attempt._id}`)
     return (
         <>
         <div className={styles.buttonArea}> 
             <div className={styles.buttonAreaTop} >
                 {
-                    attempt.status === "STARTED" ? 
+                    attempt && attempt.status === "STARTED" ? 
                     <>
                         <button 
                         onClick={() => window.open(`${dockerFileLocation}`) }
@@ -64,7 +72,7 @@ const ChallengeButtonArea = ({challenge, attempt, onChallengeStatusChange}) => {
                         >download zip file
                         </button>
                         
-                        <a className={styles.link} href={`/challenges/${challenge.id}/attempts/${attempt._id}/edit`}>
+                        <a className={styles.link} href={`/challenges/${challenge._id}/attempts/${attempt._id}/edit`}>
                             <button 
                                 className={styles.buttonStyle}
                                 onClick={() => { }}
@@ -76,7 +84,7 @@ const ChallengeButtonArea = ({challenge, attempt, onChallengeStatusChange}) => {
                     :
                     <>
                         <button className={styles.buttonStyle}
-                        onClick={() => { startChallenge(challenge) }}
+                        onClick={() => { startChallenge(challenge, candidateID) }}
                         type="submit"
                         > <p>start challenge!</p>
                         </button>
@@ -85,7 +93,7 @@ const ChallengeButtonArea = ({challenge, attempt, onChallengeStatusChange}) => {
 
             </div>
             <div className={styles.buttonAreaBottom} >
-                <a className={styles.link} href={`${challenge.id}/attempts`}>
+                <a className={styles.link} href={`${challenge._id}/attempts`}>
                     <button 
                         className={styles.buttonStyle}
                         onClick={() => { }}

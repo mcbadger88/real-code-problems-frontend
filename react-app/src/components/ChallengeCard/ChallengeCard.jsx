@@ -6,8 +6,17 @@ import { faBuilding } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
  const ChallengeCard = (props) => {
-     console.log(props.data, 'challengeCard data');
-   
+     console.log(props.data);
+
+     function numberOfStars(challenge){
+        let allStars = []
+        let times = challenge.features.length;
+        for(let i=0; i < times; i++){
+            allStars.push(<FontAwesomeIcon icon={faStar} />);
+        }
+        return allStars
+
+    }
     return (
         <div className={styles.ChallengeCard}>
                 <h2>{props.data.title}</h2>
@@ -15,8 +24,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
                 <div>{props.data.active}</div>
             <div className={styles.miniIconsContainer}>
                 <p className={styles.IconArea}>
-                    <FontAwesomeIcon icon={faStar}/>
-                    <FontAwesomeIcon icon={faStar}/>
+                    {numberOfStars(props.data)}
                 </p>
                 <p className={styles.IconArea}>|</p>
                 <p className={styles.IconArea}>

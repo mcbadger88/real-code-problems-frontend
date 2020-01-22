@@ -1,9 +1,10 @@
 import wait from '../utils/wait.js'
+import Axios from 'axios';
 
 const allAttempts = [
         {
             "status": "FAILED",
-            "_id": "100001",
+            "_id": "764aa5d0-3b1f-11ea-acfb-439a69150d3b",
             "candidate_id": {
                 "attempts": [
                     "5df865457947111ec1a81caf",
@@ -197,15 +198,24 @@ const allChallengeAttempts = [
 
 // Will use candidates/:candidateid/attempts backend route
 export const getMyAttempts = async (candidateID) => {
-    // Temp, to be replaced with backend API call to candidates/:candidateid/attempts
-
-    await wait(Math.floor(500 + Math.random() * 1500))
-    return allAttempts
+    //backend API call to candidates/:candidateid/attempts
+    let apiCall = await Axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/${candidateID}/attempts`)
+    console.log(`api call: ${apiCall}`)
+    let myAttempts = JSON.parse(apiCall.request.response)
+    return myAttempts
 }
 
-export const apiCreateAttempt = async (challengeID) => {
-    // Temp, to be replaced with backend API call?
-    // Emma this weekend - **Figure out what to do and if I can use Michael's API here**
+export const apiCreateAttempt = async (challengeID, candidateID) => {
+    // needs to be a push
+    const data = {
+        candidate_id: candidateID,
+        challenge_id: challengeID
+    }
+
+    let apiCall = await Axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/challenges/${challengeID}/attempts`, data)
+    console.log(`api call: ${apiCall}`)
+    let myAttempts = JSON.parse(apiCall.request.response)
+
     console.log("fake attempt created !")
     allAttempts[0].status = "STARTED"
     await wait(Math.floor(100 + Math.random() * 500))
@@ -225,9 +235,28 @@ export const apiSubmitAttempt = async (challengeID, submissionFile) => {
 
 // lookup attempts for challenge /:idtype/:id/attempts/, see if the current user has an attempt that is in progress 
 export const apiGetAttempt = async (challengeID, userID) => {
+    let myAttempt = null;
     // Temp, to be replaced with backend API call ? Can do a lookup of all attempts, find if I have one for my candidate ID and sere if it is active.
-    await wait(Math.floor(100 + Math.random() * 500))
-    return allAttempts[0]
+    let apiCall = await Axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/${userID}/attempts`)
+    console.log(`api call: ${apiCall}`)
+    let myAttempts = JSON.parse(apiCall.request.response)
+    //Check to see if I have a "STARTED" attempt for this challenge
+    let i
+    for(i=0; i < (myAttempts.length - 1); i++) {
+        if(myAttempts[i].challenge_id._id == challengeID) {
+            myAttempt = myAttempts[i]
+            if(myAttempts[i].status == "STARTED") {
+                break
+            }
+        }
+    }
+
+    console.log("getAttempt")
+    console.log(myAttempt)
+    console.log("getAttempt")
+    // console.log(myAttempts)
+    console.log(myAttempts[0].challenge_id)
+    return myAttempt
 }
 
 export const getAllAttemptsForChallenge = async (challengeID) => {
