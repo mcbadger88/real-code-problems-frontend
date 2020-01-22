@@ -5,7 +5,7 @@ import Axios from 'axios'
 // Challenges - the feature data is only passed by reference
 const challenges = [
     {
-        id: "5df865447947111ec1a81ca7",
+        id: "d618a0cf-80f5-4368-acda-bd6f8f296ba0",
         externalIdentifier: "d618a0cf-80f5-4368-acda-bd6f8f296ba0",
         title: "Blog Challenge",
         description: "Make a blog website in any stack of your choosing. It should have a landing page, page to add blog posts and the ability to search historical blog entries. <br> See the instructions to the right for more specifics on how to pass each feature of the challenge, good luck !",

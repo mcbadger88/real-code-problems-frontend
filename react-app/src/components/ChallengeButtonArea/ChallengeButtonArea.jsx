@@ -62,36 +62,39 @@ const ChallengeButtonArea = ({challenge, attempt, candidateID, onChallengeStatus
     return (
         <>
         <div className={styles.buttonArea}> 
+            { challenge.active ? 
             <div className={styles.buttonAreaTop} >
-                {
-                    attempt && attempt.status === "STARTED" ? 
-                    <>
+            {
+                attempt && attempt.status === "STARTED" ? 
+                <>
+                    <button 
+                    onClick={() => window.open(`${dockerFileLocation}`) }
+                    type="submit" 
+                    >download zip file
+                    </button>
+                    
+                    <a className={styles.link} href={`/challenges/${challenge.externalIdentifier}/attempts/${attempt.uuid}/edit`}>
                         <button 
-                        onClick={() => window.open(`${dockerFileLocation}`) }
-                        type="submit" 
-                        >download zip file
+                            className={styles.buttonStyle}
+                            onClick={() => { }}
+                            type="submit"
+                            >Submit Solution
                         </button>
-                        
-                        <a className={styles.link} href={`/challenges/${challenge._id}/attempts/${attempt._id}/edit`}>
-                            <button 
-                                className={styles.buttonStyle}
-                                onClick={() => { }}
-                                type="submit"
-                                >Submit Solution
-                            </button>
-                        </a>
-                    </>
-                    :
-                    <>
-                        <button className={styles.buttonStyle}
-                        onClick={() => { startChallenge(challenge, candidateID) }}
-                        type="submit"
-                        > <p>start challenge!</p>
-                        </button>
-                    </>
-                }
-
+                    </a>
+                </>
+                :
+                <>
+                    <button className={styles.buttonStyle}
+                    onClick={() => { startChallenge(challenge, candidateID) }}
+                    type="submit"
+                    > <p>start challenge!</p>
+                    </button>
+                </>
+            }
             </div>
+            : null }
+
+
             <div className={styles.buttonAreaBottom} >
                 <a className={styles.link} href={`${challenge._id}/attempts`}>
                     <button 
@@ -102,12 +105,12 @@ const ChallengeButtonArea = ({challenge, attempt, candidateID, onChallengeStatus
                     </button>
                 </a>
                 
-                <button 
+                {/* <button 
                     className={styles.buttonStyle}
                     onClick={() => { setChallengeEnabled(!challenge.active)}}
                     type="submit"
                     >(admin) {challenge.active ? "Disable" : "Enable"} Challenge
-                </button>
+                </button> */}
             </div>
         </div>
         </>

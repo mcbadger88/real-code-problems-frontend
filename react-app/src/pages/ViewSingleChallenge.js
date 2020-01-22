@@ -48,7 +48,7 @@ const ViewSingleChallenge = ({challengeID, user, appState}) => {
             setChallengeAttempt(attempt)
         }
         getStatus()
-    }, [ challengeStatusChanged, challengeID ])
+    }, [ challengeStatusChanged, challengeID, appState ])
 
 
     const toggleChallengeStatusChanged = () => {

@@ -218,7 +218,6 @@ export const apiCreateAttempt = async (challengeID, candidateID) => {
 
     console.log("fake attempt created !")
     allAttempts[0].status = "STARTED"
-    await wait(Math.floor(100 + Math.random() * 500))
     return true
 }
 
@@ -240,22 +239,29 @@ export const apiGetAttempt = async (challengeID, userID) => {
     let apiCall = await Axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/${userID}/attempts`)
     console.log(`api call: ${apiCall}`)
     let myAttempts = JSON.parse(apiCall.request.response)
+
+    console.log("getAttempt")
+    console.log(myAttempt)
+    console.log("getAttempt my attempts")
+    console.log(myAttempts)
+    console.log("challengeID")
+    console.log(challengeID)
+    // console.log(myAttempts)
+    console.log("myAttempts.length")
+    console.log(myAttempts.length)
+
     //Check to see if I have a "STARTED" attempt for this challenge
-    let i
-    for(i=0; i < (myAttempts.length - 1); i++) {
+    let i;
+    for( i = 0; i < myAttempts.length; i++) {
+        console.log(myAttempts[i].challenge_id._id == challengeID)
         if(myAttempts[i].challenge_id._id == challengeID) {
+            console.log("found attempt for this challenge")
             myAttempt = myAttempts[i]
             if(myAttempts[i].status == "STARTED") {
                 break
             }
         }
     }
-
-    console.log("getAttempt")
-    console.log(myAttempt)
-    console.log("getAttempt")
-    // console.log(myAttempts)
-    console.log(myAttempts[0].challenge_id)
     return myAttempt
 }
 
