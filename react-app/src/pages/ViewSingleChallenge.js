@@ -18,6 +18,9 @@ const ViewSingleChallenge = ({challengeID, user, appState}) => {
 
     useEffect(() => {
         console.log(features)
+        if (features){
+            setSelectedFeature(features[0])
+        }
 
     }, [ features ])
 
