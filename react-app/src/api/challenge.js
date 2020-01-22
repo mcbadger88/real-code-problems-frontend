@@ -8,7 +8,7 @@ const challenges = [
         id: "d618a0cf-80f5-4368-acda-bd6f8f296ba0",
         title: "Blog Challenge",
         description: "Make a blog website in any stack of your choosing. It should have a landing page, page to add blog posts and the ability to search historical blog entries. <br> See the instructions to the right for more specifics on how to pass each feature of the challenge, good luck !",
-        zipFileLocation: "https://github.com/saramic/real-code-challenge-blog/archive/master.zip",
+        zipFileLocation: "https://github.com/mcbadger88/real-code-problems-challengeZips/raw/master/challenge-introduction.zip",
         active: true,
         features: [allFeatures[0]._id, allFeatures[1]._id]
     },
