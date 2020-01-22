@@ -30,7 +30,7 @@ const ChallengeButtonArea = ({challenge, attempt, candidateID, onChallengeStatus
         onChallengeStatusChange()
     }
 
-    console.log(`attempt status ${attempt.status}`)
+    console.log(`attempt status ${attempt && attempt.status}`)
 
     // const saveFile = async (e) => {
     //     e.preventDefault()
@@ -50,7 +50,7 @@ const ChallengeButtonArea = ({challenge, attempt, candidateID, onChallengeStatus
     //     <input type="file" name="image" id="image"/>
     //     <button type="submit"> Submit </button>
     // </form>
-    console.log(`ChallengeButtonArea attemptID ${attempt._id}`)
+    console.log(`ChallengeButtonArea attemptID ${attempt && attempt._id}`)
     return (
         <>
         <div className={styles.buttonArea}> 

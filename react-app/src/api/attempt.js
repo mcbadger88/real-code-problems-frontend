@@ -208,11 +208,11 @@ export const getMyAttempts = async (candidateID) => {
 export const apiCreateAttempt = async (challengeID, candidateID) => {
     // needs to be a push
     const data = {
-        "candidate_id": candidateID,
-        "challenge_id": challengeID
+        candidate_id: candidateID,
+        challenge_id: challengeID
     }
 
-    let apiCall = await Axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/challenges/${challengeID}/attempts`, JSON.stringify(data))
+    let apiCall = await Axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/challenges/${challengeID}/attempts`, data)
     console.log(`api call: ${apiCall}`)
     let myAttempts = JSON.parse(apiCall.request.response)
 
@@ -235,9 +235,28 @@ export const apiSubmitAttempt = async (challengeID, submissionFile) => {
 
 // lookup attempts for challenge /:idtype/:id/attempts/, see if the current user has an attempt that is in progress 
 export const apiGetAttempt = async (challengeID, userID) => {
+    let myAttempt = null;
     // Temp, to be replaced with backend API call ? Can do a lookup of all attempts, find if I have one for my candidate ID and sere if it is active.
-    await wait(Math.floor(100 + Math.random() * 500))
-    return allAttempts[0]
+    let apiCall = await Axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/${userID}/attempts`)
+    console.log(`api call: ${apiCall}`)
+    let myAttempts = JSON.parse(apiCall.request.response)
+    //Check to see if I have a "STARTED" attempt for this challenge
+    let i
+    for(i=0; i < (myAttempts.length - 1); i++) {
+        if(myAttempts[i].challenge_id._id == challengeID) {
+            myAttempt = myAttempts[i]
+            if(myAttempts[i].status == "STARTED") {
+                break
+            }
+        }
+    }
+
+    console.log("getAttempt")
+    console.log(myAttempt)
+    console.log("getAttempt")
+    // console.log(myAttempts)
+    console.log(myAttempts[0].challenge_id)
+    return myAttempt
 }
 
 export const getAllAttemptsForChallenge = async (challengeID) => {
