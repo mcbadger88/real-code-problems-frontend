@@ -28,6 +28,7 @@ const ViewSingleChallenge = ({challengeID, user, appState}) => {
         // })
         const chall = await getSingleChallenge(challengeID)
         setChallenge(chall)
+        console.log(chall, "getsinglechallenge")
       }, [ ])
 
     useEffect( async () => {
@@ -74,7 +75,7 @@ const ViewSingleChallenge = ({challengeID, user, appState}) => {
             <div className={styles.contentArea}>
                 <div className={styles.leftHandContainer}>
                     <ChallengeDescription challenge={challenge}/>
-                    <ButtonArea challenge={challenge} attempt={challengeAttempt} onChallengeStatusChange={toggleChallengeStatusChanged}/>
+                    <ButtonArea challenge={challenge} attempt={challengeAttempt} candidateID={appState.candidateID} onChallengeStatusChange={toggleChallengeStatusChanged}/>
 
                 </div>
                 <div className={styles.rightHandContainer}>

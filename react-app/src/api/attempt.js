@@ -198,16 +198,24 @@ const allChallengeAttempts = [
 
 // Will use candidates/:candidateid/attempts backend route
 export const getMyAttempts = async (candidateID) => {
-    // Temp, to be replaced with backend API call to candidates/:candidateid/attempts
+    //backend API call to candidates/:candidateid/attempts
     let apiCall = await Axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}/candidates/${candidateID}/attempts`)
     console.log(`api call: ${apiCall}`)
     let myAttempts = JSON.parse(apiCall.request.response)
     return myAttempts
 }
 
-export const apiCreateAttempt = async (challengeID) => {
-    // Temp, to be replaced with backend API call?
-    // Emma this weekend - **Figure out what to do and if I can use Michael's API here**
+export const apiCreateAttempt = async (challengeID, candidateID) => {
+    // needs to be a push
+    const data = {
+        "candidate_id": candidateID,
+        "challenge_id": challengeID
+    }
+
+    let apiCall = await Axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/challenges/${challengeID}/attempts`, JSON.stringify(data))
+    console.log(`api call: ${apiCall}`)
+    let myAttempts = JSON.parse(apiCall.request.response)
+
     console.log("fake attempt created !")
     allAttempts[0].status = "STARTED"
     await wait(Math.floor(100 + Math.random() * 500))
