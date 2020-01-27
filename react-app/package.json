@@ -23,7 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "e2e": "cypress open"
+    "e2e": "cypress open",
+    "deploy": "npm run build && netlify deploy --prod --dir=build"
   },
   "eslintConfig": {
     "extends": "react-app"
