@@ -57,7 +57,14 @@
 }
 
 .terms {
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
     padding:1em;
     font-size:1.5rem;
 
+}
+
+.CopyRight {
+    text-align: center;
 }
