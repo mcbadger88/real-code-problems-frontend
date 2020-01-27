@@ -20,7 +20,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
     return (
         <div className={styles.ChallengeCard}>
                 <h2>{props.data.title}</h2>
-                <div>{props.data.description}</div>
                 <div>{props.data.active}</div>
             <div className={styles.miniIconsContainer}>
                 <p className={styles.IconArea}>
@@ -32,6 +31,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
                     Fresho
                 </p>
             </div>
+                <div>{props.data.description}</div>
             <NavLink className={styles.buttonLink} to={`challenges/${props.data._id}`}>More details</NavLink>
 
         </div>
