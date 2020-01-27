@@ -57,12 +57,12 @@ const EditCandidateProfileForm = ({appState, user, history}) => {
 
         <label>
             <span>Git Hub:</span>
-            <input type="text" name="github" value={candidateProfile.github} required/>
+            <input onChange={handleInputChange} type="text" name="github" value={candidateProfile.github} />
         </label>
 
         <label>
-            <span>Username:</span>
-            <input type="text" name="username" value={candidateProfile.username} required/>
+            <span>LinkedIn:</span>
+            <input onChange={handleInputChange} type="text" name="linkedin" value={candidateProfile.linkedin} />
         </label>
 
         <label className={styles.BioArea}>
